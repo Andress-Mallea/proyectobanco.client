@@ -1,0 +1,44 @@
+﻿.top-nav {
+  background-color: #1a252f; /* El color oscuro que tienes en las capturas */
+  padding: 10px 20px;
+  color: white;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center; /* Alinea verticalmente al centro */
+  gap: 30px; /* Espacio entre el título y los botones */
+}
+
+.brand {
+  font-size: 1.2rem; /* Tamaño del Sistema Bancario */
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: #bdc3c7; /* Color grisáceo para los no seleccionados */
+  text-decoration: none;
+  font-size: 1rem; /* Tamaño similar al brand */
+  transition: color 0.3s;
+  cursor: pointer;
+}
+
+.nav-links a:hover {
+  color: white;
+}
+
+.active-link {
+  color: white !important;
+  font-weight: bold;
+  border-bottom: 2px solid white; /* Una línea sutil para saber dónde estás */
+}
+
+.content-area {
+  padding-top: 20px;
+}

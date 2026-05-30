@@ -1,0 +1,180 @@
+<div class="admin-container">
+  @if (esRutaPlanes()) {
+    <div class="tab-content">
+      <section class="form-section">
+       <div class="form-container">
+        <h2 class="form-title">Solicitud de Crédito</h2>
+        <form [formGroup]="planForm" (ngSubmit)="savePlan()">
+
+          <div class="form-group">
+            <label>Seleccionar Usuario:</label>
+            <select formControlName="usuarioSeleccionado">
+              <option value="" disabled>Seleccione un usuario registrado</option>
+             @for (user of bankService.getUsers(); track user.id) {
+                <option [value]="user.fullName">
+                  {{user.fullName}} (CI: {{user.ci}})
+                </option>
+              }
+            </select>
+          </div>
+
+    <div class="form-group">
+      <label>Monto Solicitado ($):</label>
+      <input formControlName="monto" type="number" min="1">
+      @if (planForm.get('monto')?.errors?.['min']) {
+        <small style="color: red;">
+          El monto debe ser mayor a 0.
+        </small>
+      }
+    </div>
+
+    <div class="form-group">
+      <label>Plazo del Crédito (Meses):</label>
+      <input formControlName="plazoMeses" type="number" min="1">
+      @if (planForm.get('plazoMeses')?.errors?.['min']) {
+        <small style="color: red;">
+          El plazo debe ser al menos 1 mes.
+        </small>
+      }
+    </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Tasa Interés (%):</label>
+                <input formControlName="interestRate" type="number">
+              </div>
+              <div class="form-group">
+                <label>Mora (%):</label>
+                <input formControlName="penaltyRate" type="number">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Días de Tolerancia:</label>
+              <input formControlName="graceDays" type="number">
+            </div>
+
+            <div class="form-group-checkbox" style="margin-top: 20px; border-top: 1px solid #ddd; padding-top: 10px;">
+              <label style="font-weight: bold; display: block; margin-bottom: 5px;">Tipo de Tasa:</label>
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <input formControlName="esFija" type="checkbox" id="fija">
+                <label for="fija">Aplicar tasa de interés fija</label>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-save" [disabled]="planForm.invalid">Guardar Crédito</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="list-section">
+        <h3>Planes Registrados Activos</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Usuario</th>
+                <th>Monto Total</th>
+                <th>Plazo (Meses)</th>
+                <th>Saldo Pendiente</th>
+                <th>Interés</th>
+                <th>Mora</th>
+                <th>Dias de Tolerancia</th>
+                <th>Estado</th>
+                <th>Ver detalles</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (plan of bankService.getPlans(); track plan.id) {
+                <tr>
+                  <td><strong>{{plan.usuarioSeleccionado}}</strong></td>
+                  <td>{{plan.monto | currency:'USD'}}</td>
+                  <td>{{plan.plazoMeses}} meses</td>
+                  <td class="text-primary">{{plan.saldoPendiente | currency:'USD'}}</td>
+                  <td>{{plan.interestRate}}% {{plan.esFija ? '(Fija)' : '(Var)'}}</td>
+                  <td class="text-danger">{{plan.penaltyRate}}%</td>
+                  <td><strong>{{plan.graceDays}}</strong></td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  }
+
+  @if (!esRutaPlanes()) {
+    <div class="tab-content">
+      <section class="form-section">
+        <div class="form-container user-bg">
+          <h2 class="form-title">Nuevo Usuario</h2>
+          <form [formGroup]="userForm" (ngSubmit)="saveUser()">
+            <div class="form-group">
+              <label>Nombre Completo:</label>
+              <input formControlName="fullName" type="text" placeholder="Ej: Juan Pérez">
+              @if (userForm.get('fullName')?.invalid && userForm.get('fullName')?.touched) {
+                <small style="color: red;">
+                  El nombre es obligatorio.
+                </small>
+              }
+            </div>
+
+            <div class="form-group">
+              <label>Cédula de Identidad (CI):</label>
+              <input formControlName="ci" type="text" placeholder="Solo números">
+              @if (userForm.get('ci')?.errors?.['required'] && userForm.get('ci')?.touched) {
+                <small style="color: red;">
+                  El CI es obligatorio.
+                </small>
+              }
+              @if (userForm.get('ci')?.errors?.['pattern']) {
+                <small style="color: red;">
+                  El CI solo debe contener números.
+                </small>
+              }
+            </div>
+
+            <div class="form-group">
+              <label>Correo Electrónico:</label>
+              <input formControlName="email" type="email" placeholder="correo@banco.com">
+              @if (userForm.get('email')?.errors?.['required'] && userForm.get('email')?.touched) {
+                <small style="color: red;">
+                  El correo es obligatorio.
+                </small>
+              }
+              @if (userForm.get('email')?.errors?.['email'] && userForm.get('email')?.dirty) {
+                <small style="color: red;">
+                  Ingrese un formato de correo válido (ejemplo&#64;dominio.com).
+                </small>
+              }
+            </div>
+            <button type="submit" class="btn-user" [disabled]="userForm.invalid">Registrar</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="list-section">
+      <h3>Clientes Registrados</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>CI</th> <th>Email</th>
+              <th>Rol</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (user of bankService.getUsers(); track user.id) {
+              <tr>
+                <td>{{user.fullName}}</td>
+                <td>{{user.ci}}</td> <td>{{user.email}}</td>
+                <td><span class="badge">{{user.role}}</span></td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </section>
+    </div>
+  }
+</div>

@@ -1,0 +1,32 @@
+<div class="p-4 bg-gray-50 rounded-lg shadow">
+  <h2 class="text-xl font-bold mb-4">Configurar Nuevo Plan de Crédito</h2>
+  <form [formGroup]="planForm" (ngSubmit)="onSubmit()" class="space-y-4">
+    <div class="grid grid-cols-2 gap-4">
+      <input formControlName="name" placeholder="Nombre del Plan" class="p-2 border rounded">
+      <div class="flex gap-2">
+        <input type="number" formControlName="minAmount" placeholder="Monto Min" class="w-1/2 p-2 border rounded">
+        <input type="number" formControlName="maxAmount" placeholder="Monto Max" class="w-1/2 p-2 border rounded">
+      </div>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <input type="number" formControlName="interestRate" placeholder="Tasa Interés %" class="p-2 border rounded">
+      <label><input type="checkbox" formControlName="isVariableRate"> ¿Tasa Variable?</label>
+    </div>
+
+    <div class="grid grid-cols-2 gap-4 border-t pt-4">
+      <div>
+        <label class="text-sm font-semibold">Tasa Penalización (HU-02)</label>
+        <input type="number" formControlName="penaltyRate" class="w-full p-2 border rounded" placeholder="% Mora">
+      </div>
+      <div>
+        <label class="text-sm font-semibold">Días de Gracia (HU-03)</label>
+        <input type="number" formControlName="graceDays" class="w-full p-2 border rounded" placeholder="Días tolerancia">
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="planForm.invalid" class="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700">
+      Guardar Plan
+    </button>
+  </form>
+</div>

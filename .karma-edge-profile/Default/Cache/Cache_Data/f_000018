@@ -1,0 +1,1802 @@
+(self["webpackChunkproyectobanco_client"] = self["webpackChunkproyectobanco_client"] || []).push([["main"],{
+
+/***/ 1675
+/*!***************************************!*\
+  !*** ./src/app/app.component.spec.ts ***!
+  \***************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var C_Users_MSI_LAPTOP_Desktop_Taller_de_Software_ProyectoBanco_proyectobanco_client_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 9204);
+/* harmony import */ var _angular_common_http_testing__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http/testing */ 8570);
+/* harmony import */ var _angular_core_testing__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core/testing */ 9399);
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app.component */ 92);
+
+
+
+
+describe('AppComponent', () => {
+  let component;
+  let fixture;
+  let httpMock;
+  beforeEach(/*#__PURE__*/(0,C_Users_MSI_LAPTOP_Desktop_Taller_de_Software_ProyectoBanco_proyectobanco_client_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    yield _angular_core_testing__WEBPACK_IMPORTED_MODULE_2__.TestBed.configureTestingModule({
+      declarations: [_app_component__WEBPACK_IMPORTED_MODULE_3__.AppComponent],
+      imports: [_angular_common_http_testing__WEBPACK_IMPORTED_MODULE_1__.HttpClientTestingModule]
+    }).compileComponents();
+  }));
+  beforeEach(() => {
+    fixture = _angular_core_testing__WEBPACK_IMPORTED_MODULE_2__.TestBed.createComponent(_app_component__WEBPACK_IMPORTED_MODULE_3__.AppComponent);
+    component = fixture.componentInstance;
+    httpMock = _angular_core_testing__WEBPACK_IMPORTED_MODULE_2__.TestBed.inject(_angular_common_http_testing__WEBPACK_IMPORTED_MODULE_1__.HttpTestingController);
+  });
+  afterEach(() => {
+    httpMock.verify();
+  });
+  it('should create the app', () => {
+    expect(component).toBeTruthy();
+  });
+  it('should retrieve weather forecasts from the server', () => {
+    const mockForecasts = [{
+      date: '2021-10-01',
+      temperatureC: 20,
+      temperatureF: 68,
+      summary: 'Mild'
+    }, {
+      date: '2021-10-02',
+      temperatureC: 25,
+      temperatureF: 77,
+      summary: 'Warm'
+    }];
+    component.ngOnInit();
+    const req = httpMock.expectOne('/weatherforecast');
+    expect(req.request.method).toEqual('GET');
+    req.flush(mockForecasts);
+    expect(component.forecasts).toEqual(mockForecasts);
+  });
+});
+
+/***/ },
+
+/***/ 92
+/*!**********************************!*\
+  !*** ./src/app/app.component.ts ***!
+  \**********************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   AppComponent: () => (/* binding */ AppComponent)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ 4398);
+/* harmony import */ var _app_component_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app.component.html?ngResource */ 1584);
+/* harmony import */ var _app_component_css_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app.component.css?ngResource */ 309);
+/* harmony import */ var _app_component_css_ngResource__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_app_component_css_ngResource__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ 4054);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 7580);
+function cov_2o9loolhmq() {
+  var path = "C:\\Users\\MSI LAPTOP\\Desktop\\Taller-de-Software\\ProyectoBanco\\proyectobanco.client\\src\\app\\app.component.ts";
+  var hash = "57da443b10d0bbec309904928dada83213bb9b87";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "C:\\Users\\MSI LAPTOP\\Desktop\\Taller-de-Software\\ProyectoBanco\\proyectobanco.client\\src\\app\\app.component.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 6,
+          column: 19
+        },
+        end: {
+          line: 26,
+          column: 1
+        }
+      },
+      "1": {
+        start: {
+          line: 8,
+          column: 16
+        },
+        end: {
+          line: 8,
+          column: 18
+        }
+      },
+      "2": {
+        start: {
+          line: 10,
+          column: 8
+        },
+        end: {
+          line: 10,
+          column: 25
+        }
+      },
+      "3": {
+        start: {
+          line: 13,
+          column: 8
+        },
+        end: {
+          line: 13,
+          column: 28
+        }
+      },
+      "4": {
+        start: {
+          line: 16,
+          column: 8
+        },
+        end: {
+          line: 20,
+          column: 11
+        }
+      },
+      "5": {
+        start: {
+          line: 17,
+          column: 12
+        },
+        end: {
+          line: 17,
+          column: 36
+        }
+      },
+      "6": {
+        start: {
+          line: 19,
+          column: 12
+        },
+        end: {
+          line: 19,
+          column: 33
+        }
+      },
+      "7": {
+        start: {
+          line: 22,
+          column: 12
+        },
+        end: {
+          line: 22,
+          column: 34
+        }
+      },
+      "8": {
+        start: {
+          line: 23,
+          column: 28
+        },
+        end: {
+          line: 25,
+          column: 5
+        }
+      },
+      "9": {
+        start: {
+          line: 23,
+          column: 34
+        },
+        end: {
+          line: 25,
+          column: 5
+        }
+      },
+      "10": {
+        start: {
+          line: 27,
+          column: 0
+        },
+        end: {
+          line: 34,
+          column: 17
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 9,
+            column: 4
+          },
+          end: {
+            line: 9,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 9,
+            column: 22
+          },
+          end: {
+            line: 11,
+            column: 5
+          }
+        },
+        line: 9
+      },
+      "1": {
+        name: "(anonymous_1)",
+        decl: {
+          start: {
+            line: 12,
+            column: 4
+          },
+          end: {
+            line: 12,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 12,
+            column: 15
+          },
+          end: {
+            line: 14,
+            column: 5
+          }
+        },
+        line: 12
+      },
+      "2": {
+        name: "(anonymous_2)",
+        decl: {
+          start: {
+            line: 15,
+            column: 4
+          },
+          end: {
+            line: 15,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 15,
+            column: 19
+          },
+          end: {
+            line: 21,
+            column: 5
+          }
+        },
+        line: 15
+      },
+      "3": {
+        name: "(anonymous_3)",
+        decl: {
+          start: {
+            line: 16,
+            column: 52
+          },
+          end: {
+            line: 16,
+            column: 53
+          }
+        },
+        loc: {
+          start: {
+            line: 16,
+            column: 64
+          },
+          end: {
+            line: 18,
+            column: 9
+          }
+        },
+        line: 16
+      },
+      "4": {
+        name: "(anonymous_4)",
+        decl: {
+          start: {
+            line: 18,
+            column: 11
+          },
+          end: {
+            line: 18,
+            column: 12
+          }
+        },
+        loc: {
+          start: {
+            line: 18,
+            column: 22
+          },
+          end: {
+            line: 20,
+            column: 9
+          }
+        },
+        line: 18
+      },
+      "5": {
+        name: "(anonymous_5)",
+        decl: {
+          start: {
+            line: 23,
+            column: 28
+          },
+          end: {
+            line: 23,
+            column: 29
+          }
+        },
+        loc: {
+          start: {
+            line: 23,
+            column: 34
+          },
+          end: {
+            line: 25,
+            column: 5
+          }
+        },
+        line: 23
+      }
+    },
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0
+    },
+    b: {},
+    inputSourceMap: {
+      version: 3,
+      file: "app.component.js",
+      sourceRoot: "",
+      sources: ["C:\\Users\\MSI LAPTOP\\Desktop\\Taller-de-Software\\ProyectoBanco\\proyectobanco.client\\src\\app\\app.component.ts"],
+      names: [],
+      mappings: ";;;AAAA,OAAO,EAAE,UAAU,EAAE,MAAM,sBAAsB,CAAC;AAClD,OAAO,EAAE,SAAS,EAAU,MAAM,eAAe,CAAC;AAe3C,IAAM,YAAY,GAAlB,MAAM,YAAY;IAGH;IAFb,SAAS,GAAsB,EAAE,CAAC;IAEzC,YAAoB,IAAgB;QAAhB,SAAI,GAAJ,IAAI,CAAY;IAAG,CAAC;IAExC,QAAQ;QACN,IAAI,CAAC,YAAY,EAAE,CAAC;IACtB,CAAC;IAED,YAAY;QACV,IAAI,CAAC,IAAI,CAAC,GAAG,CAAoB,kBAAkB,CAAC,CAAC,SAAS,CAC5D,CAAC,MAAM,EAAE,EAAE;YACT,IAAI,CAAC,SAAS,GAAG,MAAM,CAAC;QAC1B,CAAC,EACD,CAAC,KAAK,EAAE,EAAE;YACR,OAAO,CAAC,KAAK,CAAC,KAAK,CAAC,CAAC;QACvB,CAAC,CACF,CAAC;IACJ,CAAC;IAED,KAAK,GAAG,sBAAsB,CAAC;;;;;AApBpB,YAAY;IANxB,SAAS,CAAC;QACT,QAAQ,EAAE,UAAU;QACpB,8BAAmC;QACnC,UAAU,EAAE,KAAK;;KAElB,CAAC;GACW,YAAY,CAqBxB",
+      sourcesContent: ["import { HttpClient } from '@angular/common/http';\r\nimport { Component, OnInit } from '@angular/core';\r\n\r\ninterface WeatherForecast {\r\n  date: string;\r\n  temperatureC: number;\r\n  temperatureF: number;\r\n  summary: string;\r\n}\r\n\r\n@Component({\r\n  selector: 'app-root',\r\n  templateUrl: './app.component.html',\r\n  standalone: false,\r\n  styleUrl: './app.component.css'\r\n})\r\nexport class AppComponent implements OnInit {\r\n  public forecasts: WeatherForecast[] = [];\r\n\r\n  constructor(private http: HttpClient) {}\r\n\r\n  ngOnInit() {\r\n    this.getForecasts();\r\n  }\r\n\r\n  getForecasts() {\r\n    this.http.get<WeatherForecast[]>('/weatherforecast').subscribe(\r\n      (result) => {\r\n        this.forecasts = result;\r\n      },\r\n      (error) => {\r\n        console.error(error);\r\n      }\r\n    );\r\n  }\r\n\r\n  title = 'proyectobanco.client';\r\n}\r\n"]
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "57da443b10d0bbec309904928dada83213bb9b87"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_2o9loolhmq = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_2o9loolhmq();
+
+
+
+
+
+cov_2o9loolhmq().s[0]++;
+let AppComponent = class AppComponent {
+  http;
+  forecasts = (cov_2o9loolhmq().s[1]++, []);
+  constructor(http) {
+    cov_2o9loolhmq().f[0]++;
+    cov_2o9loolhmq().s[2]++;
+    this.http = http;
+  }
+  ngOnInit() {
+    cov_2o9loolhmq().f[1]++;
+    cov_2o9loolhmq().s[3]++;
+    this.getForecasts();
+  }
+  getForecasts() {
+    cov_2o9loolhmq().f[2]++;
+    cov_2o9loolhmq().s[4]++;
+    this.http.get('/weatherforecast').subscribe(result => {
+      cov_2o9loolhmq().f[3]++;
+      cov_2o9loolhmq().s[5]++;
+      this.forecasts = result;
+    }, error => {
+      cov_2o9loolhmq().f[4]++;
+      cov_2o9loolhmq().s[6]++;
+      console.error(error);
+    });
+  }
+  title = (cov_2o9loolhmq().s[7]++, 'proyectobanco.client');
+  static ctorParameters = (cov_2o9loolhmq().s[8]++, () => {
+    cov_2o9loolhmq().f[5]++;
+    cov_2o9loolhmq().s[9]++;
+    return [{
+      type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__.HttpClient
+    }];
+  });
+};
+cov_2o9loolhmq().s[10]++;
+AppComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_4__.Component)({
+  selector: 'app-root',
+  template: _app_component_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
+  standalone: false,
+  styles: [(_app_component_css_ngResource__WEBPACK_IMPORTED_MODULE_2___default())]
+})], AppComponent);
+
+
+/***/ },
+
+/***/ 9726
+/*!********************************************!*\
+  !*** ./src/app/core/models/enums.model.ts ***!
+  \********************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   NotificationType: () => (/* binding */ NotificationType),
+/* harmony export */   UserRole: () => (/* binding */ UserRole)
+/* harmony export */ });
+function cov_1p3dbdu3zg() {
+  var path = "C:\\Users\\MSI LAPTOP\\Desktop\\Taller-de-Software\\ProyectoBanco\\proyectobanco.client\\src\\app\\core\\models\\enums.model.ts";
+  var hash = "412fdcab7c56cd00fef105bc551d60f967a834b1";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "C:\\Users\\MSI LAPTOP\\Desktop\\Taller-de-Software\\ProyectoBanco\\proyectobanco.client\\src\\app\\core\\models\\enums.model.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 6,
+          column: 32
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 4
+        },
+        end: {
+          line: 3,
+          column: 32
+        }
+      },
+      "2": {
+        start: {
+          line: 4,
+          column: 4
+        },
+        end: {
+          line: 4,
+          column: 32
+        }
+      },
+      "3": {
+        start: {
+          line: 5,
+          column: 4
+        },
+        end: {
+          line: 5,
+          column: 34
+        }
+      },
+      "4": {
+        start: {
+          line: 8,
+          column: 0
+        },
+        end: {
+          line: 11,
+          column: 48
+        }
+      },
+      "5": {
+        start: {
+          line: 9,
+          column: 4
+        },
+        end: {
+          line: 9,
+          column: 44
+        }
+      },
+      "6": {
+        start: {
+          line: 10,
+          column: 4
+        },
+        end: {
+          line: 10,
+          column: 40
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 2,
+            column: 1
+          },
+          end: {
+            line: 2,
+            column: 2
+          }
+        },
+        loc: {
+          start: {
+            line: 2,
+            column: 21
+          },
+          end: {
+            line: 6,
+            column: 1
+          }
+        },
+        line: 2
+      },
+      "1": {
+        name: "(anonymous_1)",
+        decl: {
+          start: {
+            line: 8,
+            column: 1
+          },
+          end: {
+            line: 8,
+            column: 2
+          }
+        },
+        loc: {
+          start: {
+            line: 8,
+            column: 29
+          },
+          end: {
+            line: 11,
+            column: 1
+          }
+        },
+        line: 8
+      }
+    },
+    branchMap: {
+      "0": {
+        loc: {
+          start: {
+            line: 6,
+            column: 3
+          },
+          end: {
+            line: 6,
+            column: 30
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 6,
+            column: 3
+          },
+          end: {
+            line: 6,
+            column: 11
+          }
+        }, {
+          start: {
+            line: 6,
+            column: 16
+          },
+          end: {
+            line: 6,
+            column: 29
+          }
+        }],
+        line: 6
+      },
+      "1": {
+        loc: {
+          start: {
+            line: 11,
+            column: 3
+          },
+          end: {
+            line: 11,
+            column: 46
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 11,
+            column: 3
+          },
+          end: {
+            line: 11,
+            column: 19
+          }
+        }, {
+          start: {
+            line: 11,
+            column: 24
+          },
+          end: {
+            line: 11,
+            column: 45
+          }
+        }],
+        line: 11
+      }
+    },
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0
+    },
+    b: {
+      "0": [0, 0],
+      "1": [0, 0]
+    },
+    inputSourceMap: {
+      version: 3,
+      file: "enums.model.js",
+      sourceRoot: "",
+      sources: ["C:\\Users\\MSI LAPTOP\\Desktop\\Taller-de-Software\\ProyectoBanco\\proyectobanco.client\\src\\app\\core\\models\\enums.model.ts"],
+      names: [],
+      mappings: "AAAA,MAAM,CAAN,IAAY,QAIX;AAJD,WAAY,QAAQ;IAClB,2BAAe,CAAA;IACf,2BAAe,CAAA;IACf,6BAAiB,CAAA;AACnB,CAAC,EAJW,QAAQ,KAAR,QAAQ,QAInB;AAED,MAAM,CAAN,IAAY,gBAGX;AAHD,WAAY,gBAAgB;IAC1B,uCAAmB,CAAA;IACnB,mCAAe,CAAA;AACjB,CAAC,EAHW,gBAAgB,KAAhB,gBAAgB,QAG3B",
+      sourcesContent: ["export enum UserRole {\r\n  ADMIN = 'Admin',\r\n  STAFF = 'Staff',\r\n  CLIENT = 'Client'\r\n}\r\n\r\nexport enum NotificationType {\r\n  SUCCESS = 'success',\r\n  ERROR = 'error'\r\n}\r\n"]
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "412fdcab7c56cd00fef105bc551d60f967a834b1"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_1p3dbdu3zg = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_1p3dbdu3zg();
+var UserRole;
+cov_1p3dbdu3zg().s[0]++;
+(function (UserRole) {
+  cov_1p3dbdu3zg().f[0]++;
+  cov_1p3dbdu3zg().s[1]++;
+  UserRole["ADMIN"] = "Admin";
+  cov_1p3dbdu3zg().s[2]++;
+  UserRole["STAFF"] = "Staff";
+  cov_1p3dbdu3zg().s[3]++;
+  UserRole["CLIENT"] = "Client";
+})((cov_1p3dbdu3zg().b[0][0]++, UserRole) || (cov_1p3dbdu3zg().b[0][1]++, UserRole = {}));
+var NotificationType;
+cov_1p3dbdu3zg().s[4]++;
+(function (NotificationType) {
+  cov_1p3dbdu3zg().f[1]++;
+  cov_1p3dbdu3zg().s[5]++;
+  NotificationType["SUCCESS"] = "success";
+  cov_1p3dbdu3zg().s[6]++;
+  NotificationType["ERROR"] = "error";
+})((cov_1p3dbdu3zg().b[1][0]++, NotificationType) || (cov_1p3dbdu3zg().b[1][1]++, NotificationType = {}));
+
+/***/ },
+
+/***/ 7882
+/*!************************************************************!*\
+  !*** ./src/app/core/services/notification.service.spec.ts ***!
+  \************************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _notification_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./notification.service */ 5567);
+/* harmony import */ var _models_enums_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../models/enums.model */ 9726);
+
+
+describe('NotificationService', () => {
+  let service;
+  beforeEach(() => {
+    service = new _notification_service__WEBPACK_IMPORTED_MODULE_0__.NotificationService();
+  });
+  it('debería emitir un mensaje de éxito', done => {
+    service.message$.subscribe(data => {
+      expect(data.msg).toBe('Guardado');
+      expect(data.type).toBe(_models_enums_model__WEBPACK_IMPORTED_MODULE_1__.NotificationType.SUCCESS);
+      done();
+    });
+    service.notify('Guardado', _models_enums_model__WEBPACK_IMPORTED_MODULE_1__.NotificationType.SUCCESS);
+  });
+});
+
+/***/ },
+
+/***/ 5567
+/*!*******************************************************!*\
+  !*** ./src/app/core/services/notification.service.ts ***!
+  \*******************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   NotificationService: () => (/* binding */ NotificationService)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ 4398);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 7580);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ 819);
+function cov_x6u91ktnk() {
+  var path = "C:\\Users\\MSI LAPTOP\\Desktop\\Taller-de-Software\\ProyectoBanco\\proyectobanco.client\\src\\app\\core\\services\\notification.service.ts";
+  var hash = "a7cae1a52605565d4658d4a0c24fbb31eee5f2db";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "C:\\Users\\MSI LAPTOP\\Desktop\\Taller-de-Software\\ProyectoBanco\\proyectobanco.client\\src\\app\\core\\services\\notification.service.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 4,
+          column: 26
+        },
+        end: {
+          line: 10,
+          column: 1
+        }
+      },
+      "1": {
+        start: {
+          line: 5,
+          column: 16
+        },
+        end: {
+          line: 5,
+          column: 29
+        }
+      },
+      "2": {
+        start: {
+          line: 6,
+          column: 15
+        },
+        end: {
+          line: 6,
+          column: 44
+        }
+      },
+      "3": {
+        start: {
+          line: 8,
+          column: 8
+        },
+        end: {
+          line: 8,
+          column: 43
+        }
+      },
+      "4": {
+        start: {
+          line: 11,
+          column: 0
+        },
+        end: {
+          line: 13,
+          column: 24
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 7,
+            column: 4
+          },
+          end: {
+            line: 7,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 7,
+            column: 22
+          },
+          end: {
+            line: 9,
+            column: 5
+          }
+        },
+        line: 7
+      }
+    },
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0
+    },
+    f: {
+      "0": 0
+    },
+    b: {},
+    inputSourceMap: {
+      version: 3,
+      file: "notification.service.js",
+      sourceRoot: "",
+      sources: ["C:\\Users\\MSI LAPTOP\\Desktop\\Taller-de-Software\\ProyectoBanco\\proyectobanco.client\\src\\app\\core\\services\\notification.service.ts"],
+      names: [],
+      mappings: ";AAAA,OAAO,EAAE,UAAU,EAAE,MAAM,eAAe,CAAC;AAC3C,OAAO,EAAE,OAAO,EAAE,MAAM,MAAM,CAAC;AAIxB,IAAM,mBAAmB,GAAzB,MAAM,mBAAmB;IACtB,SAAS,GAAG,IAAI,OAAO,EAAyC,CAAC;IACzE,QAAQ,GAAG,IAAI,CAAC,SAAS,CAAC,YAAY,EAAE,CAAC;IAEzC,MAAM,CAAC,GAAW,EAAE,IAAsB;QACxC,IAAI,CAAC,SAAS,CAAC,IAAI,CAAC,EAAE,GAAG,EAAE,IAAI,EAAE,CAAC,CAAC;IACrC,CAAC;CACF,CAAA;AAPY,mBAAmB;IAD/B,UAAU,CAAC,EAAE,UAAU,EAAE,MAAM,EAAE,CAAC;GACtB,mBAAmB,CAO/B",
+      sourcesContent: ["import { Injectable } from '@angular/core';\r\nimport { Subject } from 'rxjs';\r\nimport { NotificationType } from '../models/enums.model';\r\n\r\n@Injectable({ providedIn: 'root' })\r\nexport class NotificationService {\r\n  private _message$ = new Subject<{msg: string, type: NotificationType}>();\r\n  message$ = this._message$.asObservable();\r\n\r\n  notify(msg: string, type: NotificationType) {\r\n    this._message$.next({ msg, type });\r\n  }\r\n}\r\n"]
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "a7cae1a52605565d4658d4a0c24fbb31eee5f2db"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_x6u91ktnk = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_x6u91ktnk();
+
+
+
+cov_x6u91ktnk().s[0]++;
+let NotificationService = class NotificationService {
+  _message$ = (cov_x6u91ktnk().s[1]++, new rxjs__WEBPACK_IMPORTED_MODULE_2__.Subject());
+  message$ = (cov_x6u91ktnk().s[2]++, this._message$.asObservable());
+  notify(msg, type) {
+    cov_x6u91ktnk().f[0]++;
+    cov_x6u91ktnk().s[3]++;
+    this._message$.next({
+      msg,
+      type
+    });
+  }
+};
+cov_x6u91ktnk().s[4]++;
+NotificationService = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.Injectable)({
+  providedIn: 'root'
+})], NotificationService);
+
+
+/***/ },
+
+/***/ 2406
+/*!****************************************************!*\
+  !*** ./src/app/core/services/plan.service.spec.ts ***!
+  \****************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _plan_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./plan.service */ 7363);
+/* harmony import */ var _strategies_simple_interest_strategy__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../strategies/simple-interest.strategy */ 8452);
+
+
+describe('PlanService - Strategy Pattern', () => {
+  let service;
+  beforeEach(() => {
+    service = new _plan_service__WEBPACK_IMPORTED_MODULE_0__.PlanService();
+  });
+  it('debería calcular el interés simple correctamente usando la estrategia', () => {
+    // Arrange
+    const strategy = new _strategies_simple_interest_strategy__WEBPACK_IMPORTED_MODULE_1__.SimpleInterestStrategy();
+    const monto = 1000;
+    const tasa = 10; // 10%
+    // Act
+    const resultado = service.calculateFinalAmount(monto, tasa, strategy);
+    // Assert
+    expect(resultado).toBe(1100);
+  });
+  it('debería lanzar error si el monto es negativo antes de delegar', () => {
+    const strategy = new _strategies_simple_interest_strategy__WEBPACK_IMPORTED_MODULE_1__.SimpleInterestStrategy();
+    expect(() => service.calculateFinalAmount(-100, 10, strategy)).toThrow('Monto negativo');
+  });
+});
+
+/***/ },
+
+/***/ 7363
+/*!***********************************************!*\
+  !*** ./src/app/core/services/plan.service.ts ***!
+  \***********************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   PlanService: () => (/* binding */ PlanService)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ 4398);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 7580);
+function cov_26asnda9sr() {
+  var path = "C:\\Users\\MSI LAPTOP\\Desktop\\Taller-de-Software\\ProyectoBanco\\proyectobanco.client\\src\\app\\core\\services\\plan.service.ts";
+  var hash = "254d5687943fbe14cfdf3f44a06dd5e370b61f26";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "C:\\Users\\MSI LAPTOP\\Desktop\\Taller-de-Software\\ProyectoBanco\\proyectobanco.client\\src\\app\\core\\services\\plan.service.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 3,
+          column: 18
+        },
+        end: {
+          line: 10,
+          column: 1
+        }
+      },
+      "1": {
+        start: {
+          line: 6,
+          column: 8
+        },
+        end: {
+          line: 7,
+          column: 46
+        }
+      },
+      "2": {
+        start: {
+          line: 7,
+          column: 12
+        },
+        end: {
+          line: 7,
+          column: 46
+        }
+      },
+      "3": {
+        start: {
+          line: 8,
+          column: 8
+        },
+        end: {
+          line: 8,
+          column: 47
+        }
+      },
+      "4": {
+        start: {
+          line: 11,
+          column: 0
+        },
+        end: {
+          line: 13,
+          column: 16
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 5,
+            column: 4
+          },
+          end: {
+            line: 5,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 5,
+            column: 48
+          },
+          end: {
+            line: 9,
+            column: 5
+          }
+        },
+        line: 5
+      }
+    },
+    branchMap: {
+      "0": {
+        loc: {
+          start: {
+            line: 6,
+            column: 8
+          },
+          end: {
+            line: 7,
+            column: 46
+          }
+        },
+        type: "if",
+        locations: [{
+          start: {
+            line: 6,
+            column: 8
+          },
+          end: {
+            line: 7,
+            column: 46
+          }
+        }, {
+          start: {
+            line: undefined,
+            column: undefined
+          },
+          end: {
+            line: undefined,
+            column: undefined
+          }
+        }],
+        line: 6
+      }
+    },
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0
+    },
+    f: {
+      "0": 0
+    },
+    b: {
+      "0": [0, 0]
+    },
+    inputSourceMap: {
+      version: 3,
+      file: "plan.service.js",
+      sourceRoot: "",
+      sources: ["C:\\Users\\MSI LAPTOP\\Desktop\\Taller-de-Software\\ProyectoBanco\\proyectobanco.client\\src\\app\\core\\services\\plan.service.ts"],
+      names: [],
+      mappings: ";AAAA,OAAO,EAAE,UAAU,EAAE,MAAM,eAAe,CAAC;AAIpC,IAAM,WAAW,GAAjB,MAAM,WAAW;IACtB,iFAAiF;IACjF,oBAAoB,CAAC,KAAa,EAAE,IAAY,EAAE,QAA0B;QAC1E,IAAI,KAAK,GAAG,CAAC;YAAE,MAAM,IAAI,KAAK,CAAC,gBAAgB,CAAC,CAAC;QACjD,OAAO,QAAQ,CAAC,SAAS,CAAC,KAAK,EAAE,IAAI,CAAC,CAAC;IACzC,CAAC;CACF,CAAA;AANY,WAAW;IADvB,UAAU,CAAC,EAAE,UAAU,EAAE,MAAM,EAAE,CAAC;GACtB,WAAW,CAMvB",
+      sourcesContent: ["import { Injectable } from '@angular/core';\r\nimport { CreditPlan } from '../models/credit-plan.model';\r\nimport { InterestStrategy } from '../strategies/interest.strategy';\r\n@Injectable({ providedIn: 'root' })\r\nexport class PlanService {\r\n  // El servicio no sabe c\xF3mo se calcula el inter\xE9s, solo delega al objeto strategy\r\n  calculateFinalAmount(monto: number, tasa: number, strategy: InterestStrategy): number {\r\n    if (monto < 0) throw new Error('Monto negativo');\r\n    return strategy.calculate(monto, tasa);\r\n  }\r\n}\r\n"]
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "254d5687943fbe14cfdf3f44a06dd5e370b61f26"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_26asnda9sr = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_26asnda9sr();
+
+
+cov_26asnda9sr().s[0]++;
+let PlanService = class PlanService {
+  // El servicio no sabe cómo se calcula el interés, solo delega al objeto strategy
+  calculateFinalAmount(monto, tasa, strategy) {
+    cov_26asnda9sr().f[0]++;
+    cov_26asnda9sr().s[1]++;
+    if (monto < 0) {
+      cov_26asnda9sr().b[0][0]++;
+      cov_26asnda9sr().s[2]++;
+      throw new Error('Monto negativo');
+    } else {
+      cov_26asnda9sr().b[0][1]++;
+    }
+    cov_26asnda9sr().s[3]++;
+    return strategy.calculate(monto, tasa);
+  }
+};
+cov_26asnda9sr().s[4]++;
+PlanService = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.Injectable)({
+  providedIn: 'root'
+})], PlanService);
+
+
+/***/ },
+
+/***/ 6918
+/*!****************************************************!*\
+  !*** ./src/app/core/services/user.service.spec.ts ***!
+  \****************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./user.service */ 3443);
+/* harmony import */ var _models_enums_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../models/enums.model */ 9726);
+
+
+describe('UserService', () => {
+  let service;
+  beforeEach(() => {
+    // Se instancia el servicio antes de cada prueba para tener un estado limpio
+    service = new _user_service__WEBPACK_IMPORTED_MODULE_0__.UserService();
+  });
+  it('debería ser creado correctamente', () => {
+    expect(service).toBeTruthy();
+  });
+  it('debería retornar error si el CI ya existe', () => {
+    // Arrange
+    const u1 = {
+      id: '1',
+      fullName: 'A',
+      email: 'a@a.com',
+      ci: '123',
+      role: 'Client'
+    };
+    const u2 = {
+      id: '2',
+      fullName: 'B',
+      email: 'b@b.com',
+      ci: '123',
+      role: 'Client'
+    };
+    // Act
+    service.addUser(u1);
+    const resultado = service.addUser(u2);
+    // Assert
+    expect(resultado).toBe('Error: Ya existe un usuario con esta Cédula de Identidad.');
+  });
+  it('debería permitir agregar un usuario nuevo exitosamente', () => {
+    const user = {
+      id: '1',
+      fullName: 'A',
+      email: 'a@a.com',
+      ci: '123',
+      role: 'Client'
+    };
+    const resultado = service.addUser(user);
+    expect(resultado).toBeNull();
+    expect(service.getUsers().length).toBe(1);
+  });
+  it('debería asignar el rol CLIENT por defecto mediante enum', () => {
+    const service = new _user_service__WEBPACK_IMPORTED_MODULE_0__.UserService();
+    const user = {
+      ci: '1',
+      email: 'x@x.com',
+      fullName: 'X'
+    }; // Sin rol
+    service.addUser(user);
+    expect(service.getUsers()[0].role).toBe(_models_enums_model__WEBPACK_IMPORTED_MODULE_1__.UserRole.CLIENT);
+  });
+});
+
+/***/ },
+
+/***/ 3443
+/*!***********************************************!*\
+  !*** ./src/app/core/services/user.service.ts ***!
+  \***********************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   UserService: () => (/* binding */ UserService)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ 4398);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 7580);
+function cov_x5c864hc4() {
+  var path = "C:\\Users\\MSI LAPTOP\\Desktop\\Taller-de-Software\\ProyectoBanco\\proyectobanco.client\\src\\app\\core\\services\\user.service.ts";
+  var hash = "8946dd57722a2b3d7891a96c88769524aacce5b6";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "C:\\Users\\MSI LAPTOP\\Desktop\\Taller-de-Software\\ProyectoBanco\\proyectobanco.client\\src\\app\\core\\services\\user.service.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 3,
+          column: 18
+        },
+        end: {
+          line: 19,
+          column: 1
+        }
+      },
+      "1": {
+        start: {
+          line: 4,
+          column: 12
+        },
+        end: {
+          line: 4,
+          column: 14
+        }
+      },
+      "2": {
+        start: {
+          line: 6,
+          column: 8
+        },
+        end: {
+          line: 6,
+          column: 26
+        }
+      },
+      "3": {
+        start: {
+          line: 10,
+          column: 23
+        },
+        end: {
+          line: 10,
+          column: 87
+        }
+      },
+      "4": {
+        start: {
+          line: 10,
+          column: 44
+        },
+        end: {
+          line: 10,
+          column: 86
+        }
+      },
+      "5": {
+        start: {
+          line: 11,
+          column: 8
+        },
+        end: {
+          line: 15,
+          column: 9
+        }
+      },
+      "6": {
+        start: {
+          line: 12,
+          column: 12
+        },
+        end: {
+          line: 14,
+          column: 78
+        }
+      },
+      "7": {
+        start: {
+          line: 16,
+          column: 8
+        },
+        end: {
+          line: 16,
+          column: 69
+        }
+      },
+      "8": {
+        start: {
+          line: 17,
+          column: 8
+        },
+        end: {
+          line: 17,
+          column: 20
+        }
+      },
+      "9": {
+        start: {
+          line: 20,
+          column: 0
+        },
+        end: {
+          line: 22,
+          column: 16
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 5,
+            column: 4
+          },
+          end: {
+            line: 5,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 5,
+            column: 15
+          },
+          end: {
+            line: 7,
+            column: 5
+          }
+        },
+        line: 5
+      },
+      "1": {
+        name: "(anonymous_1)",
+        decl: {
+          start: {
+            line: 8,
+            column: 4
+          },
+          end: {
+            line: 8,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 8,
+            column: 18
+          },
+          end: {
+            line: 18,
+            column: 5
+          }
+        },
+        line: 8
+      },
+      "2": {
+        name: "(anonymous_2)",
+        decl: {
+          start: {
+            line: 10,
+            column: 39
+          },
+          end: {
+            line: 10,
+            column: 40
+          }
+        },
+        loc: {
+          start: {
+            line: 10,
+            column: 44
+          },
+          end: {
+            line: 10,
+            column: 86
+          }
+        },
+        line: 10
+      }
+    },
+    branchMap: {
+      "0": {
+        loc: {
+          start: {
+            line: 10,
+            column: 44
+          },
+          end: {
+            line: 10,
+            column: 86
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 10,
+            column: 44
+          },
+          end: {
+            line: 10,
+            column: 66
+          }
+        }, {
+          start: {
+            line: 10,
+            column: 70
+          },
+          end: {
+            line: 10,
+            column: 86
+          }
+        }],
+        line: 10
+      },
+      "1": {
+        loc: {
+          start: {
+            line: 11,
+            column: 8
+          },
+          end: {
+            line: 15,
+            column: 9
+          }
+        },
+        type: "if",
+        locations: [{
+          start: {
+            line: 11,
+            column: 8
+          },
+          end: {
+            line: 15,
+            column: 9
+          }
+        }, {
+          start: {
+            line: undefined,
+            column: undefined
+          },
+          end: {
+            line: undefined,
+            column: undefined
+          }
+        }],
+        line: 11
+      },
+      "2": {
+        loc: {
+          start: {
+            line: 12,
+            column: 19
+          },
+          end: {
+            line: 14,
+            column: 77
+          }
+        },
+        type: "cond-expr",
+        locations: [{
+          start: {
+            line: 13,
+            column: 18
+          },
+          end: {
+            line: 13,
+            column: 64
+          }
+        }, {
+          start: {
+            line: 14,
+            column: 18
+          },
+          end: {
+            line: 14,
+            column: 77
+          }
+        }],
+        line: 12
+      }
+    },
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0,
+      "2": 0
+    },
+    b: {
+      "0": [0, 0],
+      "1": [0, 0],
+      "2": [0, 0]
+    },
+    inputSourceMap: {
+      version: 3,
+      file: "user.service.js",
+      sourceRoot: "",
+      sources: ["C:\\Users\\MSI LAPTOP\\Desktop\\Taller-de-Software\\ProyectoBanco\\proyectobanco.client\\src\\app\\core\\services\\user.service.ts"],
+      names: [],
+      mappings: ";AAAA,OAAO,EAAE,UAAU,EAAE,MAAM,eAAe,CAAC;AAIpC,IAAM,WAAW,GAAjB,MAAM,WAAW;IACd,KAAK,GAAiB,EAAE,CAAC;IAEjC,QAAQ;QACN,OAAO,IAAI,CAAC,KAAK,CAAC;IACpB,CAAC;IAED,OAAO,CAAC,IAAgB;QACtB,oCAAoC;QACpC,MAAM,MAAM,GAAG,IAAI,CAAC,KAAK,CAAC,IAAI,CAAC,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC,KAAK,KAAK,IAAI,CAAC,KAAK,IAAI,CAAC,CAAC,EAAE,KAAK,IAAI,CAAC,EAAE,CAAC,CAAC;QAEhF,IAAI,MAAM,EAAE,CAAC;YACX,OAAO,CAAC,MAAM,CAAC,KAAK,KAAK,IAAI,CAAC,KAAK,CAAC;gBAClC,CAAC,CAAC,8CAA8C;gBAChD,CAAC,CAAC,2DAA2D,CAAC;QAClE,CAAC;QAED,IAAI,CAAC,KAAK,CAAC,IAAI,CAAC,EAAE,GAAG,IAAI,EAAE,EAAE,EAAE,IAAI,CAAC,MAAM,EAAE,CAAC,QAAQ,CAAC,EAAE,CAAC,EAAE,CAAC,CAAC;QAC7D,OAAO,IAAI,CAAC,CAAC,QAAQ;IACvB,CAAC;CACF,CAAA;AApBY,WAAW;IADvB,UAAU,CAAC,EAAE,UAAU,EAAE,MAAM,EAAE,CAAC;GACtB,WAAW,CAoBvB",
+      sourcesContent: ["import { Injectable } from '@angular/core';\r\nimport { SystemUser } from '../models/user.model';\r\n\r\n@Injectable({ providedIn: 'root' })\r\nexport class UserService {\r\n  private users: SystemUser[] = [];\r\n\r\n  getUsers(): SystemUser[] {\r\n    return this.users;\r\n  }\r\n\r\n  addUser(user: SystemUser): string | null {\r\n    // Validar duplicados por Email o CI\r\n    const exists = this.users.find(u => u.email === user.email || u.ci === user.ci);\r\n\r\n    if (exists) {\r\n      return (exists.email === user.email)\r\n        ? 'Error: Ya existe un usuario con este correo.'\r\n        : 'Error: Ya existe un usuario con esta C\xE9dula de Identidad.';\r\n    }\r\n\r\n    this.users.push({ ...user, id: Math.random().toString(36) });\r\n    return null; // \xC9xito\r\n  }\r\n}\r\n"]
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "8946dd57722a2b3d7891a96c88769524aacce5b6"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_x5c864hc4 = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_x5c864hc4();
+
+
+cov_x5c864hc4().s[0]++;
+let UserService = class UserService {
+  users = (cov_x5c864hc4().s[1]++, []);
+  getUsers() {
+    cov_x5c864hc4().f[0]++;
+    cov_x5c864hc4().s[2]++;
+    return this.users;
+  }
+  addUser(user) {
+    cov_x5c864hc4().f[1]++;
+    // Validar duplicados por Email o CI
+    const exists = (cov_x5c864hc4().s[3]++, this.users.find(u => {
+      cov_x5c864hc4().f[2]++;
+      cov_x5c864hc4().s[4]++;
+      return (cov_x5c864hc4().b[0][0]++, u.email === user.email) || (cov_x5c864hc4().b[0][1]++, u.ci === user.ci);
+    }));
+    cov_x5c864hc4().s[5]++;
+    if (exists) {
+      cov_x5c864hc4().b[1][0]++;
+      cov_x5c864hc4().s[6]++;
+      return exists.email === user.email ? (cov_x5c864hc4().b[2][0]++, 'Error: Ya existe un usuario con este correo.') : (cov_x5c864hc4().b[2][1]++, 'Error: Ya existe un usuario con esta Cédula de Identidad.');
+    } else {
+      cov_x5c864hc4().b[1][1]++;
+    }
+    cov_x5c864hc4().s[7]++;
+    this.users.push({
+      ...user,
+      id: Math.random().toString(36)
+    });
+    cov_x5c864hc4().s[8]++;
+    return null; // Éxito
+  }
+};
+cov_x5c864hc4().s[9]++;
+UserService = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.Injectable)({
+  providedIn: 'root'
+})], UserService);
+
+
+/***/ },
+
+/***/ 8452
+/*!*************************************************************!*\
+  !*** ./src/app/core/strategies/simple-interest.strategy.ts ***!
+  \*************************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   SimpleInterestStrategy: () => (/* binding */ SimpleInterestStrategy)
+/* harmony export */ });
+function cov_8p2pmuxod() {
+  var path = "C:\\Users\\MSI LAPTOP\\Desktop\\Taller-de-Software\\ProyectoBanco\\proyectobanco.client\\src\\app\\core\\strategies\\simple-interest.strategy.ts";
+  var hash = "6d550cd291712735646ea17df25887c81c0ffa55";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "C:\\Users\\MSI LAPTOP\\Desktop\\Taller-de-Software\\ProyectoBanco\\proyectobanco.client\\src\\app\\core\\strategies\\simple-interest.strategy.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 3,
+          column: 8
+        },
+        end: {
+          line: 3,
+          column: 42
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 2,
+            column: 4
+          },
+          end: {
+            line: 2,
+            column: 5
+          }
+        },
+        loc: {
+          start: {
+            line: 2,
+            column: 27
+          },
+          end: {
+            line: 4,
+            column: 5
+          }
+        },
+        line: 2
+      }
+    },
+    branchMap: {},
+    s: {
+      "0": 0
+    },
+    f: {
+      "0": 0
+    },
+    b: {},
+    inputSourceMap: {
+      version: 3,
+      file: "simple-interest.strategy.js",
+      sourceRoot: "",
+      sources: ["C:\\Users\\MSI LAPTOP\\Desktop\\Taller-de-Software\\ProyectoBanco\\proyectobanco.client\\src\\app\\core\\strategies\\simple-interest.strategy.ts"],
+      names: [],
+      mappings: "AAEA,MAAM,OAAO,sBAAsB;IACjC,SAAS,CAAC,KAAa,EAAE,IAAY;QACnC,OAAO,KAAK,GAAG,CAAC,CAAC,GAAG,CAAC,IAAI,GAAG,GAAG,CAAC,CAAC,CAAC;IACpC,CAAC;CACF",
+      sourcesContent: ["import { InterestStrategy } from './interest.strategy';\r\n\r\nexport class SimpleInterestStrategy implements InterestStrategy {\r\n  calculate(monto: number, tasa: number): number {\r\n    return monto * (1 + (tasa / 100));\r\n  }\r\n}\r\n"]
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "6d550cd291712735646ea17df25887c81c0ffa55"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_8p2pmuxod = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_8p2pmuxod();
+class SimpleInterestStrategy {
+  calculate(monto, tasa) {
+    cov_8p2pmuxod().f[0]++;
+    cov_8p2pmuxod().s[0]++;
+    return monto * (1 + tasa / 100);
+  }
+}
+
+/***/ },
+
+/***/ 3066
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ng-virtual-main.js!=!data:text/javascript;base64,CiAgaW1wb3J0IHsgZ2V0VGVzdEJlZCB9IGZyb20gJ0Bhbmd1bGFyL2NvcmUvdGVzdGluZyc7CiAgaW1wb3J0IHsKICAgIEJyb3dzZXJEeW5hbWljVGVzdGluZ01vZHVsZSwKICAgIHBsYXRmb3JtQnJvd3NlckR5bmFtaWNUZXN0aW5nLAogICB9IGZyb20gJ0Bhbmd1bGFyL3BsYXRmb3JtLWJyb3dzZXItZHluYW1pYy90ZXN0aW5nJzsKCiAgLy8gSW5pdGlhbGl6ZSB0aGUgQW5ndWxhciB0ZXN0aW5nIGVudmlyb25tZW50LgogIGdldFRlc3RCZWQoKS5pbml0VGVzdEVudmlyb25tZW50KEJyb3dzZXJEeW5hbWljVGVzdGluZ01vZHVsZSwgcGxhdGZvcm1Ccm93c2VyRHluYW1pY1Rlc3RpbmcoKSwgewogICAgZXJyb3JPblVua25vd25FbGVtZW50czogdHJ1ZSwKICAgIGVycm9yT25Vbmtub3duUHJvcGVydGllczogdHJ1ZQogIH0pOwo= ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _angular_core_testing__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core/testing */ 9399);
+/* harmony import */ var _angular_platform_browser_dynamic_testing__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser-dynamic/testing */ 1110);
+
+
+
+// Initialize the Angular testing environment.
+(0,_angular_core_testing__WEBPACK_IMPORTED_MODULE_0__.getTestBed)().initTestEnvironment(_angular_platform_browser_dynamic_testing__WEBPACK_IMPORTED_MODULE_1__.BrowserDynamicTestingModule, (0,_angular_platform_browser_dynamic_testing__WEBPACK_IMPORTED_MODULE_1__.platformBrowserDynamicTesting)(), {
+  errorOnUnknownElements: true,
+  errorOnUnknownProperties: true
+});
+
+/***/ },
+
+/***/ 309
+/*!**********************************************!*\
+  !*** ./src/app/app.component.css?ngResource ***!
+  \**********************************************/
+(module, __unused_webpack_exports, __webpack_require__) {
+
+// Imports
+var ___CSS_LOADER_API_SOURCEMAP_IMPORT___ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/sourceMaps.js */ 3142);
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ 5950);
+var ___CSS_LOADER_EXPORT___ = ___CSS_LOADER_API_IMPORT___(___CSS_LOADER_API_SOURCEMAP_IMPORT___);
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, `.top-nav {
+  background-color: #1a252f; /* El color oscuro que tienes en las capturas */
+  padding: 10px 20px;
+  color: white;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center; /* Alinea verticalmente al centro */
+  gap: 30px; /* Espacio entre el título y los botones */
+}
+
+.brand {
+  font-size: 1.2rem; /* Tamaño del Sistema Bancario */
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: #bdc3c7; /* Color grisáceo para los no seleccionados */
+  text-decoration: none;
+  font-size: 1rem; /* Tamaño similar al brand */
+  transition: color 0.3s;
+  cursor: pointer;
+}
+
+.nav-links a:hover {
+  color: white;
+}
+
+.active-link {
+  color: white !important;
+  font-weight: bold;
+  border-bottom: 2px solid white; /* Una línea sutil para saber dónde estás */
+}
+
+.content-area {
+  padding-top: 20px;
+}
+`, "",{"version":3,"sources":["webpack://./src/app/app.component.css"],"names":[],"mappings":"AAAA;EACE,yBAAyB,EAAE,+CAA+C;EAC1E,kBAAkB;EAClB,YAAY;AACd;;AAEA;EACE,aAAa;EACb,mBAAmB,EAAE,mCAAmC;EACxD,SAAS,EAAE,0CAA0C;AACvD;;AAEA;EACE,iBAAiB,EAAE,gCAAgC;EACnD,iBAAiB;EACjB,mBAAmB;AACrB;;AAEA;EACE,aAAa;EACb,SAAS;AACX;;AAEA;EACE,cAAc,EAAE,6CAA6C;EAC7D,qBAAqB;EACrB,eAAe,EAAE,4BAA4B;EAC7C,sBAAsB;EACtB,eAAe;AACjB;;AAEA;EACE,YAAY;AACd;;AAEA;EACE,uBAAuB;EACvB,iBAAiB;EACjB,8BAA8B,EAAE,2CAA2C;AAC7E;;AAEA;EACE,iBAAiB;AACnB","sourcesContent":[".top-nav {\r\n  background-color: #1a252f; /* El color oscuro que tienes en las capturas */\r\n  padding: 10px 20px;\r\n  color: white;\r\n}\r\n\r\n.nav-container {\r\n  display: flex;\r\n  align-items: center; /* Alinea verticalmente al centro */\r\n  gap: 30px; /* Espacio entre el título y los botones */\r\n}\r\n\r\n.brand {\r\n  font-size: 1.2rem; /* Tamaño del Sistema Bancario */\r\n  font-weight: bold;\r\n  white-space: nowrap;\r\n}\r\n\r\n.nav-links {\r\n  display: flex;\r\n  gap: 20px;\r\n}\r\n\r\n.nav-links a {\r\n  color: #bdc3c7; /* Color grisáceo para los no seleccionados */\r\n  text-decoration: none;\r\n  font-size: 1rem; /* Tamaño similar al brand */\r\n  transition: color 0.3s;\r\n  cursor: pointer;\r\n}\r\n\r\n.nav-links a:hover {\r\n  color: white;\r\n}\r\n\r\n.active-link {\r\n  color: white !important;\r\n  font-weight: bold;\r\n  border-bottom: 2px solid white; /* Una línea sutil para saber dónde estás */\r\n}\r\n\r\n.content-area {\r\n  padding-top: 20px;\r\n}\r\n"],"sourceRoot":""}]);
+// Exports
+module.exports = ___CSS_LOADER_EXPORT___.toString();
+
+
+/***/ },
+
+/***/ 1584
+/*!***********************************************!*\
+  !*** ./src/app/app.component.html?ngResource ***!
+  \***********************************************/
+(module) {
+
+"use strict";
+module.exports = "﻿<nav class=\"top-nav\">\r\n  <div class=\"nav-container\">\r\n    <span class=\"brand\">Sistema Bancario</span>\r\n\r\n    <div class=\"nav-links\">\r\n      <a routerLink=\"/admin/plans\" routerLinkActive=\"active-link\">Planes de Crédito</a>\r\n      <a routerLink=\"/admin/users\" routerLinkActive=\"active-link\">Gestión de Usuarios</a>\r\n    </div>\r\n  </div>\r\n</nav>\r\n\r\n<main class=\"content-area\">\r\n  <router-outlet></router-outlet>\r\n</main>\r\n\r\n";
+
+/***/ }
+
+},
+/******/ __webpack_require__ => { // webpackRuntimeModules
+/******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
+/******/ __webpack_require__.O(0, ["vendor"], () => (__webpack_exec__(2309), __webpack_exec__(3066), __webpack_exec__(1675), __webpack_exec__(7882), __webpack_exec__(2406), __webpack_exec__(6918)));
+/******/ var __webpack_exports__ = __webpack_require__.O();
+/******/ }
+]);
+//# sourceMappingURL=main.js.map

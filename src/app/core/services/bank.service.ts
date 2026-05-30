@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CreditPlan } from '../models/credit-plan.model';
 import { SystemUser } from '../models/user.model';
-
+import { UserRole } from '../models/enums.model';
 @Injectable({ providedIn: 'root' })
 export class BankService {
   private plans: CreditPlan[] = [];
@@ -34,6 +34,7 @@ export class BankService {
   getUsers() { return this.users; }
 
   addUser(user: SystemUser): string | null {
+    user.role = user.role || UserRole.CLIENT;
     // Validar duplicados por Email o CI
     const exists = this.users.find(u => u.email === user.email || u.ci === user.ci);
 

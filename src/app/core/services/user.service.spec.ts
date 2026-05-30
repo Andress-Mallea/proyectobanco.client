@@ -1,6 +1,6 @@
 import { UserService } from './user.service';
 import { SystemUser } from '../models/user.model';
-
+import { UserRole } from '../models/enums.model';
 describe('UserService', () => {
   let service: UserService;
 
@@ -33,4 +33,10 @@ describe('UserService', () => {
     expect(resultado).toBeNull();
     expect(service.getUsers().length).toBe(1);
   });
+  it('debería asignar el rol CLIENT por defecto mediante enum', () => {
+    const service = new UserService();
+    const user: any = { ci: '1', email: 'x@x.com', fullName: 'X' }; // Sin rol
+    service.addUser(user);
+    expect(service.getUsers()[0].role).toBe(UserRole.CLIENT);
+});
 });

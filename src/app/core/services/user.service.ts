@@ -10,11 +10,11 @@ export class UserService {
   }
 
   addUser(user: SystemUser): string | null {
-    // Validar duplicados por Email o CI
-    const exists = this.users.find(u => u.email === user.email || u.ci === user.ci);
-    if (user.ci.length < 6 || user.ci.length > 10 || isNaN(Number(user.ci))) {
+    const ciRegex = /^\d{6,10}$/;
+    if (!ciRegex.test(user.ci)) {
         return 'Error: Formato de CI inválido.';
     }
+    const exists = this.users.find(u => u.email === user.email || u.ci === user.ci);
     if (exists) {
       return (exists.email === user.email)
         ? 'Error: Ya existe un usuario con este correo.'

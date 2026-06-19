@@ -8,7 +8,10 @@ export class PlanService {
     if (monto < 0) throw new Error('Monto negativo');
     return strategy.calculate(monto, tasa);
   }
-  calculatePenalty(saldo: number, penalidad: number, atraso: number, gracia: number): number {
-  return 0;
+  calculatePenalty(saldo: number, penaltyRate: number, atraso: number, gracia: number): number {
+    if (atraso <= gracia) {
+      return 0;
+    }
+    return saldo * (penaltyRate / 100) * (atraso - gracia);
   }
 }

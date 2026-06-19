@@ -1,3 +1,4 @@
+/// <reference types="jasmine" />
 import { NotificationService } from './notification.service';
 import { NotificationType } from '../models/enums.model';
 

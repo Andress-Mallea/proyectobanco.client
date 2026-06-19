@@ -25,4 +25,11 @@ describe('PlanService - Strategy Pattern', () => {
     const strategy = new SimpleInterestStrategy();
     expect(() => service.calculateFinalAmount(-100, 10, strategy)).toThrow('Monto negativo');
   });
+  fit('debería calcular mora solo sobre los días que excedan la tolerancia (gracia)', () => {
+    const mora = service.calculatePenalty(1000, 5, 10, 3);
+    const sinMora = service.calculatePenalty(1000, 5, 2, 3);
+
+    expect(mora).toBe(350);
+    expect(sinMora).toBe(0);
+  });
 });

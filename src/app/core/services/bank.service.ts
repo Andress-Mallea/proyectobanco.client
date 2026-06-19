@@ -1,15 +1,9 @@
 import { Injectable } from '@angular/core';
 import { CreditPlan } from '../models/credit-plan.model';
-import { SystemUser } from '../models/user.model';
-import { UserRole } from '../models/enums.model';
 
 @Injectable({ providedIn: 'root' })
 export class BankService {
   private readonly MAX_CREDIT_AMOUNT = 50000;
-  private users: SystemUser[] = [
-    { id: 'u1', fullName: 'Carlos Mendoza', email: 'cmendoza@gmail.com', ci: '7654321', role: UserRole.CLIENT },
-    { id: 'u2', fullName: 'Ana Laura Rios', email: 'arios@empresa.com', ci: '8877665', role: UserRole.CLIENT }
-  ];
 
   private plans: CreditPlan[] = [
     {
@@ -25,47 +19,38 @@ export class BankService {
       createdAt: new Date()
     }
   ];
+
   public notifications: { message: string, type: 'success' | 'error' }[] = [];
+
   getPlans() { return this.plans; }
+
   AddPlan(plan: any) {
     if (plan.monto > this.MAX_CREDIT_AMOUNT) {
       throw new Error('El monto excede el límite permitido');
     }
+
     const nuevoCredito: CreditPlan = {
-        usuarioSeleccionado: plan.usuarioSeleccionado,
-        monto: plan.monto,
-        plazoMeses: plan.plazoMeses,
-        interestRate: plan.interestRate,
-        esFija: plan.esFija,
-        penaltyRate: plan.penaltyRate,
-        graceDays: plan.graceDays,
-        saldoPendiente: plan.monto,
-        createdAt: new Date(),
-        id: Math.random().toString(36)
-      };
-  this.plans.push(nuevoCredito);
-  this.showToast('Crédito creado exitosamente');
+      usuarioSeleccionado: plan.usuarioSeleccionado,
+      monto: plan.monto,
+      plazoMeses: plan.plazoMeses,
+      interestRate: plan.interestRate,
+      esFija: plan.esFija,
+      penaltyRate: plan.penaltyRate,
+      graceDays: plan.graceDays,
+      saldoPendiente: plan.monto,
+      createdAt: new Date(),
+      id: Math.random().toString(36)
+    };
+
+    this.plans.push(nuevoCredito);
+    this.showToast('Crédito creado exitosamente');
   }
+
   showToast(message: string, type: 'success' | 'error' = 'success') {
-  this.notifications.push({ message, type });
-  setTimeout(() => {
-    this.notifications.shift();
-  }, 3000);
-}
-  getUsers() { return this.users; }
-
-  addUser(user: SystemUser): string | null {
-    user.role = user.role || UserRole.CLIENT;
-    const exists = this.users.find(u => u.email === user.email || u.ci === user.ci);
-
-    if (exists) {
-      return (exists.email === user.email)
-        ? 'Error: Ya existe un usuario con este correo.'
-        : 'Error: Ya existe un usuario con esta Cédula de Identidad.';
-    }
-
-    this.users.push({ ...user, id: Math.random().toString(36) });
-    this.showToast('Usuario registrado exitosamente');
-    return null;
+    //const TOAST_DURATION_MS = 3000;
+    this.notifications.push({ message, type });
+    setTimeout(() => {
+      this.notifications.shift();
+    }, 3000);
   }
 }

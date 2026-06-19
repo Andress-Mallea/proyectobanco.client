@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
 import { SystemUser } from '../models/user.model';
+import { UserRole } from '../models/enums.model';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-  private users: SystemUser[] = [];
+  private users: SystemUser[] = [
+    { id: 'u1', fullName: 'Carlos Mendoza', email: 'cmendoza@gmail.com', ci: '7654321', role: UserRole.CLIENT },
+    { id: 'u2', fullName: 'Ana Laura Rios', email: 'arios@empresa.com', ci: '8877665', role: UserRole.CLIENT }
+  ];
 
   getUsers(): SystemUser[] {
     return this.users;
@@ -21,7 +25,11 @@ export class UserService {
         : 'Error: Ya existe un usuario con esta Cédula de Identidad.';
     }
 
-    this.users.push({ ...user, id: Math.random().toString(36) });
+    this.users.push({
+      ...user,
+      id: Math.random().toString(36),
+      role: user.role ?? UserRole.CLIENT
+    });
     return null;
   }
 }

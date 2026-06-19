@@ -15,8 +15,8 @@ describe('UserService', () => {
 
   it('debería retornar error si el CI ya existe', () => {
     // Arrange
-    const u1: SystemUser = { id: '1', fullName: 'A', email: 'a@a.com', ci: '123', role: 'Client' };
-    const u2: SystemUser = { id: '2', fullName: 'B', email: 'b@b.com', ci: '123', role: 'Client' };
+    const u1: SystemUser = { id: '1', fullName: 'A', email: 'a@a.com', ci: '123456', role: 'Client' };
+    const u2: SystemUser = { id: '2', fullName: 'B', email: 'b@b.com', ci: '123456', role: 'Client' };
 
     // Act
     service.addUser(u1);
@@ -27,7 +27,7 @@ describe('UserService', () => {
   });
 
   it('debería permitir agregar un usuario nuevo exitosamente', () => {
-    const user: SystemUser = { id: '1', fullName: 'A', email: 'a@a.com', ci: '123', role: 'Client' };
+    const user: SystemUser = { id: '1', fullName: 'A', email: 'a@a.com', ci: '123456', role: 'Client' };
     const resultado = service.addUser(user);
 
     expect(resultado).toBeNull();
@@ -35,7 +35,7 @@ describe('UserService', () => {
   });
   it('debería asignar el rol CLIENT por defecto mediante enum', () => {
     const service = new UserService();
-    const user: any = { ci: '1', email: 'x@x.com', fullName: 'X' }; // Sin rol
+    const user: any = { ci: '123456', email: 'x@x.com', fullName: 'X' }; // Sin rol
     service.addUser(user);
     expect(service.getUsers()[0].role).toBe(UserRole.CLIENT);
   });

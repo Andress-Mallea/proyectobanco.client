@@ -4,8 +4,25 @@ import { SystemUser } from '../models/user.model';
 import { UserRole } from '../models/enums.model';
 @Injectable({ providedIn: 'root' })
 export class BankService {
-  private plans: CreditPlan[] = [];
-  private users: SystemUser[] = [];
+  private users: SystemUser[] = [
+    { id: 'u1', fullName: 'Carlos Mendoza', email: 'cmendoza@gmail.com', ci: '7654321', role: UserRole.CLIENT },
+    { id: 'u2', fullName: 'Ana Laura Rios', email: 'arios@empresa.com', ci: '8877665', role: UserRole.CLIENT }
+  ];
+
+  private plans: CreditPlan[] = [
+    {
+      id: 'p1',
+      usuarioSeleccionado: 'Carlos Mendoza',
+      monto: 15000,
+      plazoMeses: 24,
+      interestRate: 12,
+      esFija: true,
+      penaltyRate: 5,
+      graceDays: 3,
+      saldoPendiente: 15000,
+      createdAt: new Date()
+    }
+  ];
   public notifications: { message: string, type: 'success' | 'error' }[] = [];
   getPlans() { return this.plans; }
   AddPlan(plan: any) {

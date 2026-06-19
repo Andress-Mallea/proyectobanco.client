@@ -32,3 +32,13 @@
 {"logTime": "0619/085627", "level": "INFO", "location": "chrome\\browser\\sessions\\session_restore.cc:1096 FinishedTabCreation", "message": "Creating all tabs/browsers completed"}
 {"logTime": "0619/085627", "level": "INFO", "location": "chrome\\browser\\sessions\\session_restore.cc:1375 LogEdgeSessionRestoreTelemetry", "message": "Session restore completed successfully"}
 {"logTime": "0619/085627", "level": "INFO", "location": "chrome\\browser\\sessions\\session_restore.cc:1381 LogEdgeSessionRestoreTelemetry", "message": "1 tabs restored and loaded"}
+{"logTime": "0619/101423", "session": "START"}
+{"logTime": "0619/101423", "level": "INFO", "location": "chrome\\browser\\ui\\startup\\startup_browser_creator_impl.cc:350 EdgeLogLastSessionExitTypeOnStartup", "message": "Previous Session Exit Type: PreviousSessionExitType::kBrowserCrash"}
+{"logTime": "0619/101423", "level": "INFO", "location": "chrome\\browser\\ui\\startup\\startup_browser_creator_impl.cc:1388 DetermineURLsAndLaunch", "message": "Startup Preference: 0"}
+{"logTime": "0619/101423", "level": "INFO", "location": "chrome\\browser\\ui\\startup\\startup_browser_creator_impl.cc:1390 DetermineURLsAndLaunch", "message": "Browser Open Behavior: 0"}
+{"logTime": "0619/101423", "level": "INFO", "location": "components\\sessions\\core\\command_storage_manager.cc:222 operator()", "message": "Valid session file found: SessionRestore"}
+{"logTime": "0619/101423", "level": "INFO", "location": "components\\sessions\\core\\command_storage_manager.cc:222 operator()", "message": "Last session file : Session_13426332895070810"}
+{"logTime": "0619/101423", "level": "INFO", "location": "components\\sessions\\core\\session_service_commands.cc:762 CreateTabsAndWindows", "message": "Commands to decode: 17"}
+{"logTime": "0619/101423", "level": "INFO", "location": "components\\sessions\\core\\session_service_commands.cc:2142 RestoreSessionFromCommands", "message": "Parse from commands results: Tabs 1, groups 0, windows 1, discarded windows 0"}
+{"logTime": "0619/101423", "level": "INFO", "location": "components\\sessions\\core\\session_service_commands.cc:524 EdgeLogDecodeResults", "message": "All tabs/windows/tab groups decoded"}
+{"logTime": "0619/101423", "level": "INFO", "location": "components\\sessions\\core\\session_service_commands.cc:526 EdgeLogDecodeResults", "message": "Decoded windows: 1, discarded windows: 0"}

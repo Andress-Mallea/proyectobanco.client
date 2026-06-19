@@ -1,0 +1,652 @@
+(self["webpackChunkproyectobanco_client"] = self["webpackChunkproyectobanco_client"] || []).push([["main"],{
+
+/***/ 1675
+/*!***************************************!*\
+  !*** ./src/app/app.component.spec.ts ***!
+  \***************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var C_Users_MSI_LAPTOP_Desktop_Taller_de_Software_ProyectoBanco_proyectobanco_client_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 9204);
+/* harmony import */ var _angular_common_http_testing__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http/testing */ 8570);
+/* harmony import */ var _angular_core_testing__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core/testing */ 9399);
+/* harmony import */ var _angular_router_testing__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router/testing */ 457);
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app.component */ 92);
+
+
+
+
+
+describe('AppComponent', () => {
+  let component;
+  let fixture;
+  let httpMock;
+  beforeEach(/*#__PURE__*/(0,C_Users_MSI_LAPTOP_Desktop_Taller_de_Software_ProyectoBanco_proyectobanco_client_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    yield _angular_core_testing__WEBPACK_IMPORTED_MODULE_2__.TestBed.configureTestingModule({
+      declarations: [_app_component__WEBPACK_IMPORTED_MODULE_4__.AppComponent],
+      imports: [_angular_common_http_testing__WEBPACK_IMPORTED_MODULE_1__.HttpClientTestingModule, _angular_router_testing__WEBPACK_IMPORTED_MODULE_3__.RouterTestingModule]
+    }).compileComponents();
+  }));
+  beforeEach(() => {
+    fixture = _angular_core_testing__WEBPACK_IMPORTED_MODULE_2__.TestBed.createComponent(_app_component__WEBPACK_IMPORTED_MODULE_4__.AppComponent);
+    component = fixture.componentInstance;
+    httpMock = _angular_core_testing__WEBPACK_IMPORTED_MODULE_2__.TestBed.inject(_angular_common_http_testing__WEBPACK_IMPORTED_MODULE_1__.HttpTestingController);
+  });
+  afterEach(() => {
+    httpMock.verify();
+  });
+  it('should create the app', () => {
+    expect(component).toBeTruthy();
+  });
+  it('should retrieve weather forecasts from the server', () => {
+    const mockForecasts = [{
+      date: '2021-10-01',
+      temperatureC: 20,
+      temperatureF: 68,
+      summary: 'Mild'
+    }, {
+      date: '2021-10-02',
+      temperatureC: 25,
+      temperatureF: 77,
+      summary: 'Warm'
+    }];
+    component.ngOnInit();
+    const req = httpMock.expectOne('/weatherforecast');
+    expect(req.request.method).toEqual('GET');
+    req.flush(mockForecasts);
+    expect(component.forecasts).toEqual(mockForecasts);
+  });
+});
+
+/***/ },
+
+/***/ 92
+/*!**********************************!*\
+  !*** ./src/app/app.component.ts ***!
+  \**********************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   AppComponent: () => (/* binding */ AppComponent)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ 4398);
+/* harmony import */ var _app_component_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app.component.html?ngResource */ 1584);
+/* harmony import */ var _app_component_css_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app.component.css?ngResource */ 309);
+/* harmony import */ var _app_component_css_ngResource__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_app_component_css_ngResource__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ 4054);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ 7580);
+
+
+
+
+
+let AppComponent = class AppComponent {
+  http;
+  forecasts = [];
+  constructor(http) {
+    this.http = http;
+  }
+  ngOnInit() {
+    this.getForecasts();
+  }
+  getForecasts() {
+    this.http.get('/weatherforecast').subscribe(result => {
+      this.forecasts = result;
+    }, error => {
+      console.error(error);
+    });
+  }
+  title = 'proyectobanco.client';
+  static ctorParameters = () => [{
+    type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__.HttpClient
+  }];
+};
+AppComponent = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_4__.Component)({
+  selector: 'app-root',
+  template: _app_component_html_ngResource__WEBPACK_IMPORTED_MODULE_1__,
+  standalone: false,
+  styles: [(_app_component_css_ngResource__WEBPACK_IMPORTED_MODULE_2___default())]
+})], AppComponent);
+
+
+/***/ },
+
+/***/ 9726
+/*!********************************************!*\
+  !*** ./src/app/core/models/enums.model.ts ***!
+  \********************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   NotificationType: () => (/* binding */ NotificationType),
+/* harmony export */   UserRole: () => (/* binding */ UserRole)
+/* harmony export */ });
+var UserRole;
+(function (UserRole) {
+  UserRole["ADMIN"] = "Admin";
+  UserRole["STAFF"] = "Staff";
+  UserRole["CLIENT"] = "Client";
+})(UserRole || (UserRole = {}));
+var NotificationType;
+(function (NotificationType) {
+  NotificationType["SUCCESS"] = "success";
+  NotificationType["ERROR"] = "error";
+})(NotificationType || (NotificationType = {}));
+
+/***/ },
+
+/***/ 5201
+/*!****************************************************!*\
+  !*** ./src/app/core/services/bank.service.spec.ts ***!
+  \****************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _bank_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./bank.service */ 8378);
+
+describe('BankService', () => {
+  it('debería lanzar error si el monto del plan supera el límite máximo de 50000', () => {
+    const service = new _bank_service__WEBPACK_IMPORTED_MODULE_0__.BankService();
+    const planInvalido = {
+      monto: 60000,
+      usuarioSeleccionado: 'Juan',
+      plazoMeses: 12
+    };
+    expect(() => service.AddPlan(planInvalido)).toThrowError('El monto excede el límite permitido');
+  });
+});
+
+/***/ },
+
+/***/ 8378
+/*!***********************************************!*\
+  !*** ./src/app/core/services/bank.service.ts ***!
+  \***********************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   BankService: () => (/* binding */ BankService)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ 4398);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 7580);
+/* harmony import */ var _models_enums_model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../models/enums.model */ 9726);
+
+
+
+let BankService = class BankService {
+  MAX_CREDIT_AMOUNT = 50000;
+  users = [{
+    id: 'u1',
+    fullName: 'Carlos Mendoza',
+    email: 'cmendoza@gmail.com',
+    ci: '7654321',
+    role: _models_enums_model__WEBPACK_IMPORTED_MODULE_2__.UserRole.CLIENT
+  }, {
+    id: 'u2',
+    fullName: 'Ana Laura Rios',
+    email: 'arios@empresa.com',
+    ci: '8877665',
+    role: _models_enums_model__WEBPACK_IMPORTED_MODULE_2__.UserRole.CLIENT
+  }];
+  plans = [{
+    id: 'p1',
+    usuarioSeleccionado: 'Carlos Mendoza',
+    monto: 15000,
+    plazoMeses: 24,
+    interestRate: 12,
+    esFija: true,
+    penaltyRate: 5,
+    graceDays: 3,
+    saldoPendiente: 15000,
+    createdAt: new Date()
+  }];
+  notifications = [];
+  getPlans() {
+    return this.plans;
+  }
+  AddPlan(plan) {
+    if (plan.monto > this.MAX_CREDIT_AMOUNT) {
+      throw new Error('El monto excede el límite permitido');
+    }
+    const nuevoCredito = {
+      usuarioSeleccionado: plan.usuarioSeleccionado,
+      monto: plan.monto,
+      plazoMeses: plan.plazoMeses,
+      interestRate: plan.interestRate,
+      esFija: plan.esFija,
+      penaltyRate: plan.penaltyRate,
+      graceDays: plan.graceDays,
+      saldoPendiente: plan.monto,
+      createdAt: new Date(),
+      id: Math.random().toString(36)
+    };
+    this.plans.push(nuevoCredito);
+    this.showToast('Crédito creado exitosamente');
+  }
+  showToast(message, type = 'success') {
+    this.notifications.push({
+      message,
+      type
+    });
+    setTimeout(() => {
+      this.notifications.shift();
+    }, 3000);
+  }
+  getUsers() {
+    return this.users;
+  }
+  addUser(user) {
+    user.role = user.role || _models_enums_model__WEBPACK_IMPORTED_MODULE_2__.UserRole.CLIENT;
+    const exists = this.users.find(u => u.email === user.email || u.ci === user.ci);
+    if (exists) {
+      return exists.email === user.email ? 'Error: Ya existe un usuario con este correo.' : 'Error: Ya existe un usuario con esta Cédula de Identidad.';
+    }
+    this.users.push({
+      ...user,
+      id: Math.random().toString(36)
+    });
+    this.showToast('Usuario registrado exitosamente');
+    return null;
+  }
+};
+BankService = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.Injectable)({
+  providedIn: 'root'
+})], BankService);
+
+
+/***/ },
+
+/***/ 7882
+/*!************************************************************!*\
+  !*** ./src/app/core/services/notification.service.spec.ts ***!
+  \************************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _notification_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./notification.service */ 5567);
+/* harmony import */ var _models_enums_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../models/enums.model */ 9726);
+/// <reference types="jasmine" />
+
+
+describe('NotificationService', () => {
+  let service;
+  beforeEach(() => {
+    service = new _notification_service__WEBPACK_IMPORTED_MODULE_0__.NotificationService();
+  });
+  it('debería emitir un mensaje de éxito', done => {
+    service.message$.subscribe(data => {
+      expect(data.msg).toBe('Guardado');
+      expect(data.type).toBe(_models_enums_model__WEBPACK_IMPORTED_MODULE_1__.NotificationType.SUCCESS);
+      done();
+    });
+    service.notify('Guardado', _models_enums_model__WEBPACK_IMPORTED_MODULE_1__.NotificationType.SUCCESS);
+  });
+});
+
+/***/ },
+
+/***/ 5567
+/*!*******************************************************!*\
+  !*** ./src/app/core/services/notification.service.ts ***!
+  \*******************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   NotificationService: () => (/* binding */ NotificationService)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ 4398);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 7580);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ 819);
+
+
+
+let NotificationService = class NotificationService {
+  _message$ = new rxjs__WEBPACK_IMPORTED_MODULE_2__.Subject();
+  message$ = this._message$.asObservable();
+  notify(msg, type) {
+    this._message$.next({
+      msg,
+      type
+    });
+  }
+};
+NotificationService = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.Injectable)({
+  providedIn: 'root'
+})], NotificationService);
+
+
+/***/ },
+
+/***/ 2406
+/*!****************************************************!*\
+  !*** ./src/app/core/services/plan.service.spec.ts ***!
+  \****************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _plan_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./plan.service */ 7363);
+/* harmony import */ var _strategies_simple_interest_strategy__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../strategies/simple-interest.strategy */ 8452);
+
+
+describe('PlanService - Strategy Pattern', () => {
+  let service;
+  beforeEach(() => {
+    service = new _plan_service__WEBPACK_IMPORTED_MODULE_0__.PlanService();
+  });
+  it('debería calcular el interés simple correctamente usando la estrategia', () => {
+    // Arrange
+    const strategy = new _strategies_simple_interest_strategy__WEBPACK_IMPORTED_MODULE_1__.SimpleInterestStrategy();
+    const monto = 1000;
+    const tasa = 10; // 10%
+    // Act
+    const resultado = service.calculateFinalAmount(monto, tasa, strategy);
+    // Assert
+    expect(resultado).toBe(1100);
+  });
+  it('debería lanzar error si el monto es negativo antes de delegar', () => {
+    const strategy = new _strategies_simple_interest_strategy__WEBPACK_IMPORTED_MODULE_1__.SimpleInterestStrategy();
+    expect(() => service.calculateFinalAmount(-100, 10, strategy)).toThrowError('Monto negativo');
+  });
+  it('debería calcular mora solo sobre los días que excedan la tolerancia (gracia)', () => {
+    const mora = service.calculatePenalty(1000, 5, 10, 3);
+    const sinMora = service.calculatePenalty(1000, 5, 2, 3);
+    expect(mora).toBe(350);
+    expect(sinMora).toBe(0);
+  });
+});
+
+/***/ },
+
+/***/ 7363
+/*!***********************************************!*\
+  !*** ./src/app/core/services/plan.service.ts ***!
+  \***********************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   PlanService: () => (/* binding */ PlanService)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ 4398);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 7580);
+
+
+let PlanService = class PlanService {
+  // El servicio no sabe cómo se calcula el interés, solo delega al objeto strategy
+  calculateFinalAmount(monto, tasa, strategy) {
+    if (monto < 0) throw new Error('Monto negativo');
+    return strategy.calculate(monto, tasa);
+  }
+  calculatePenalty(saldo, penaltyRate, atraso, gracia) {
+    if (saldo < 0 || penaltyRate < 0) throw new Error('Valores financieros inválidos');
+    const diasCobro = Math.max(0, atraso - gracia);
+    return saldo * (penaltyRate / 100) * diasCobro;
+  }
+};
+PlanService = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.Injectable)({
+  providedIn: 'root'
+})], PlanService);
+
+
+/***/ },
+
+/***/ 6918
+/*!****************************************************!*\
+  !*** ./src/app/core/services/user.service.spec.ts ***!
+  \****************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _user_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./user.service */ 3443);
+/* harmony import */ var _models_enums_model__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../models/enums.model */ 9726);
+
+
+describe('UserService', () => {
+  let service;
+  beforeEach(() => {
+    // Se instancia el servicio antes de cada prueba para tener un estado limpio
+    service = new _user_service__WEBPACK_IMPORTED_MODULE_0__.UserService();
+  });
+  it('debería ser creado correctamente', () => {
+    expect(service).toBeTruthy();
+  });
+  it('debería retornar error si el CI ya existe', () => {
+    // Arrange
+    const u1 = {
+      id: '1',
+      fullName: 'A',
+      email: 'a@a.com',
+      ci: '123456',
+      role: 'Client'
+    };
+    const u2 = {
+      id: '2',
+      fullName: 'B',
+      email: 'b@b.com',
+      ci: '123456',
+      role: 'Client'
+    };
+    // Act
+    service.addUser(u1);
+    const resultado = service.addUser(u2);
+    // Assert
+    expect(resultado).toBe('Error: Ya existe un usuario con esta Cédula de Identidad.');
+  });
+  it('debería permitir agregar un usuario nuevo exitosamente', () => {
+    const user = {
+      id: '1',
+      fullName: 'A',
+      email: 'a@a.com',
+      ci: '123456',
+      role: 'Client'
+    };
+    const resultado = service.addUser(user);
+    expect(resultado).toBeNull();
+    expect(service.getUsers().length).toBe(1);
+  });
+  it('debería asignar el rol CLIENT por defecto mediante enum', () => {
+    const service = new _user_service__WEBPACK_IMPORTED_MODULE_0__.UserService();
+    const user = {
+      ci: '123456',
+      email: 'x@x.com',
+      fullName: 'X'
+    }; // Sin rol
+    service.addUser(user);
+    expect(service.getUsers()[0].role).toBe(_models_enums_model__WEBPACK_IMPORTED_MODULE_1__.UserRole.CLIENT);
+  });
+  it('debería retornar error si el CI tiene un formato inválido', () => {
+    const userInvalido = {
+      id: '3',
+      fullName: 'C',
+      email: 'c@c.com',
+      ci: '123A',
+      role: 'Client'
+    };
+    const result = service.addUser(userInvalido);
+    expect(result).toBe('Error: Formato de CI inválido.');
+  });
+});
+
+/***/ },
+
+/***/ 3443
+/*!***********************************************!*\
+  !*** ./src/app/core/services/user.service.ts ***!
+  \***********************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   UserService: () => (/* binding */ UserService)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ 4398);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 7580);
+/* harmony import */ var _models_enums_model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../models/enums.model */ 9726);
+
+
+
+let UserService = class UserService {
+  users = [];
+  getUsers() {
+    return this.users;
+  }
+  addUser(user) {
+    const ciRegex = /^\d{6,10}$/;
+    if (!ciRegex.test(user.ci)) {
+      return 'Error: Formato de CI inválido.';
+    }
+    const exists = this.users.find(u => u.email === user.email || u.ci === user.ci);
+    if (exists) {
+      return exists.email === user.email ? 'Error: Ya existe un usuario con este correo.' : 'Error: Ya existe un usuario con esta Cédula de Identidad.';
+    }
+    this.users.push({
+      ...user,
+      id: Math.random().toString(36),
+      role: user.role ?? _models_enums_model__WEBPACK_IMPORTED_MODULE_2__.UserRole.CLIENT
+    });
+    return null;
+  }
+};
+UserService = (0,tslib__WEBPACK_IMPORTED_MODULE_0__.__decorate)([(0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.Injectable)({
+  providedIn: 'root'
+})], UserService);
+
+
+/***/ },
+
+/***/ 8452
+/*!*************************************************************!*\
+  !*** ./src/app/core/strategies/simple-interest.strategy.ts ***!
+  \*************************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   SimpleInterestStrategy: () => (/* binding */ SimpleInterestStrategy)
+/* harmony export */ });
+class SimpleInterestStrategy {
+  calculate(monto, tasa) {
+    return monto * (1 + tasa / 100);
+  }
+}
+
+/***/ },
+
+/***/ 3066
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ng-virtual-main.js!=!data:text/javascript;base64,CiAgaW1wb3J0IHsgZ2V0VGVzdEJlZCB9IGZyb20gJ0Bhbmd1bGFyL2NvcmUvdGVzdGluZyc7CiAgaW1wb3J0IHsKICAgIEJyb3dzZXJEeW5hbWljVGVzdGluZ01vZHVsZSwKICAgIHBsYXRmb3JtQnJvd3NlckR5bmFtaWNUZXN0aW5nLAogICB9IGZyb20gJ0Bhbmd1bGFyL3BsYXRmb3JtLWJyb3dzZXItZHluYW1pYy90ZXN0aW5nJzsKCiAgLy8gSW5pdGlhbGl6ZSB0aGUgQW5ndWxhciB0ZXN0aW5nIGVudmlyb25tZW50LgogIGdldFRlc3RCZWQoKS5pbml0VGVzdEVudmlyb25tZW50KEJyb3dzZXJEeW5hbWljVGVzdGluZ01vZHVsZSwgcGxhdGZvcm1Ccm93c2VyRHluYW1pY1Rlc3RpbmcoKSwgewogICAgZXJyb3JPblVua25vd25FbGVtZW50czogdHJ1ZSwKICAgIGVycm9yT25Vbmtub3duUHJvcGVydGllczogdHJ1ZQogIH0pOwo= ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _angular_core_testing__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core/testing */ 9399);
+/* harmony import */ var _angular_platform_browser_dynamic_testing__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser-dynamic/testing */ 1110);
+
+
+
+// Initialize the Angular testing environment.
+(0,_angular_core_testing__WEBPACK_IMPORTED_MODULE_0__.getTestBed)().initTestEnvironment(_angular_platform_browser_dynamic_testing__WEBPACK_IMPORTED_MODULE_1__.BrowserDynamicTestingModule, (0,_angular_platform_browser_dynamic_testing__WEBPACK_IMPORTED_MODULE_1__.platformBrowserDynamicTesting)(), {
+  errorOnUnknownElements: true,
+  errorOnUnknownProperties: true
+});
+
+/***/ },
+
+/***/ 309
+/*!**********************************************!*\
+  !*** ./src/app/app.component.css?ngResource ***!
+  \**********************************************/
+(module, __unused_webpack_exports, __webpack_require__) {
+
+// Imports
+var ___CSS_LOADER_API_SOURCEMAP_IMPORT___ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/sourceMaps.js */ 3142);
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ 5950);
+var ___CSS_LOADER_EXPORT___ = ___CSS_LOADER_API_IMPORT___(___CSS_LOADER_API_SOURCEMAP_IMPORT___);
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, `.top-nav {
+  background-color: #1a252f; /* El color oscuro que tienes en las capturas */
+  padding: 10px 20px;
+  color: white;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center; /* Alinea verticalmente al centro */
+  gap: 30px; /* Espacio entre el título y los botones */
+}
+
+.brand {
+  font-size: 1.2rem; /* Tamaño del Sistema Bancario */
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: #bdc3c7; /* Color grisáceo para los no seleccionados */
+  text-decoration: none;
+  font-size: 1rem; /* Tamaño similar al brand */
+  transition: color 0.3s;
+  cursor: pointer;
+}
+
+.nav-links a:hover {
+  color: white;
+}
+
+.active-link {
+  color: white !important;
+  font-weight: bold;
+  border-bottom: 2px solid white; /* Una línea sutil para saber dónde estás */
+}
+
+.content-area {
+  padding-top: 20px;
+}
+`, "",{"version":3,"sources":["webpack://./src/app/app.component.css"],"names":[],"mappings":"AAAA;EACE,yBAAyB,EAAE,+CAA+C;EAC1E,kBAAkB;EAClB,YAAY;AACd;;AAEA;EACE,aAAa;EACb,mBAAmB,EAAE,mCAAmC;EACxD,SAAS,EAAE,0CAA0C;AACvD;;AAEA;EACE,iBAAiB,EAAE,gCAAgC;EACnD,iBAAiB;EACjB,mBAAmB;AACrB;;AAEA;EACE,aAAa;EACb,SAAS;AACX;;AAEA;EACE,cAAc,EAAE,6CAA6C;EAC7D,qBAAqB;EACrB,eAAe,EAAE,4BAA4B;EAC7C,sBAAsB;EACtB,eAAe;AACjB;;AAEA;EACE,YAAY;AACd;;AAEA;EACE,uBAAuB;EACvB,iBAAiB;EACjB,8BAA8B,EAAE,2CAA2C;AAC7E;;AAEA;EACE,iBAAiB;AACnB","sourcesContent":[".top-nav {\r\n  background-color: #1a252f; /* El color oscuro que tienes en las capturas */\r\n  padding: 10px 20px;\r\n  color: white;\r\n}\r\n\r\n.nav-container {\r\n  display: flex;\r\n  align-items: center; /* Alinea verticalmente al centro */\r\n  gap: 30px; /* Espacio entre el título y los botones */\r\n}\r\n\r\n.brand {\r\n  font-size: 1.2rem; /* Tamaño del Sistema Bancario */\r\n  font-weight: bold;\r\n  white-space: nowrap;\r\n}\r\n\r\n.nav-links {\r\n  display: flex;\r\n  gap: 20px;\r\n}\r\n\r\n.nav-links a {\r\n  color: #bdc3c7; /* Color grisáceo para los no seleccionados */\r\n  text-decoration: none;\r\n  font-size: 1rem; /* Tamaño similar al brand */\r\n  transition: color 0.3s;\r\n  cursor: pointer;\r\n}\r\n\r\n.nav-links a:hover {\r\n  color: white;\r\n}\r\n\r\n.active-link {\r\n  color: white !important;\r\n  font-weight: bold;\r\n  border-bottom: 2px solid white; /* Una línea sutil para saber dónde estás */\r\n}\r\n\r\n.content-area {\r\n  padding-top: 20px;\r\n}\r\n"],"sourceRoot":""}]);
+// Exports
+module.exports = ___CSS_LOADER_EXPORT___.toString();
+
+
+/***/ },
+
+/***/ 1584
+/*!***********************************************!*\
+  !*** ./src/app/app.component.html?ngResource ***!
+  \***********************************************/
+(module) {
+
+"use strict";
+module.exports = "﻿<nav class=\"top-nav\">\r\n  <div class=\"nav-container\">\r\n    <span class=\"brand\">Sistema Bancario</span>\r\n\r\n    <div class=\"nav-links\">\r\n      <a routerLink=\"/admin/plans\" routerLinkActive=\"active-link\">Planes de Crédito</a>\r\n      <a routerLink=\"/admin/users\" routerLinkActive=\"active-link\">Gestión de Usuarios</a>\r\n    </div>\r\n  </div>\r\n</nav>\r\n\r\n<main class=\"content-area\">\r\n  <router-outlet></router-outlet>\r\n</main>\r\n\r\n";
+
+/***/ }
+
+},
+/******/ __webpack_require__ => { // webpackRuntimeModules
+/******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
+/******/ __webpack_require__.O(0, ["vendor"], () => (__webpack_exec__(2309), __webpack_exec__(3066), __webpack_exec__(1675), __webpack_exec__(5201), __webpack_exec__(7882), __webpack_exec__(2406), __webpack_exec__(6918)));
+/******/ var __webpack_exports__ = __webpack_require__.O();
+/******/ }
+]);
+//# sourceMappingURL=main.js.map

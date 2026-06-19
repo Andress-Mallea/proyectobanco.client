@@ -47,10 +47,10 @@ export class BankService {
   }
 
   showToast(message: string, type: 'success' | 'error' = 'success') {
-    //const TOAST_DURATION_MS = 3000;
+    const TOAST_DURATION_MS = 3000;
     this.notifications.push({ message, type });
     setTimeout(() => {
       this.notifications.shift();
-    }, 3000);
+    }, TOAST_DURATION_MS);
   }
 }

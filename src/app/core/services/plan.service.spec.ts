@@ -26,6 +26,7 @@ describe('PlanService - Strategy Pattern', () => {
     expect(() => service.calculateFinalAmount(-100, 10, strategy)).toThrowError('Monto negativo');
   });
   it('debería calcular mora solo sobre los días que excedan la tolerancia (gracia)', () => {
+    const service = new PlanService();
     const mora = service.calculatePenalty(1000, 5, 10, 3);
     const sinMora = service.calculatePenalty(1000, 5, 2, 3);
 

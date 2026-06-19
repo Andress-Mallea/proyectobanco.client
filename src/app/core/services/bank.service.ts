@@ -2,8 +2,10 @@ import { Injectable } from '@angular/core';
 import { CreditPlan } from '../models/credit-plan.model';
 import { SystemUser } from '../models/user.model';
 import { UserRole } from '../models/enums.model';
+
 @Injectable({ providedIn: 'root' })
 export class BankService {
+  private readonly MAX_CREDIT_AMOUNT = 50000;
   private users: SystemUser[] = [
     { id: 'u1', fullName: 'Carlos Mendoza', email: 'cmendoza@gmail.com', ci: '7654321', role: UserRole.CLIENT },
     { id: 'u2', fullName: 'Ana Laura Rios', email: 'arios@empresa.com', ci: '8877665', role: UserRole.CLIENT }
@@ -26,7 +28,7 @@ export class BankService {
   public notifications: { message: string, type: 'success' | 'error' }[] = [];
   getPlans() { return this.plans; }
   AddPlan(plan: any) {
-    if (plan.monto > 50000) {
+    if (plan.monto > this.MAX_CREDIT_AMOUNT) {
       throw new Error('El monto excede el límite permitido');
     }
     const nuevoCredito: CreditPlan = {

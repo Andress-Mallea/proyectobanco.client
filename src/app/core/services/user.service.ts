@@ -12,7 +12,9 @@ export class UserService {
   addUser(user: SystemUser): string | null {
     // Validar duplicados por Email o CI
     const exists = this.users.find(u => u.email === user.email || u.ci === user.ci);
-
+    if (user.ci.length < 6 || user.ci.length > 10 || isNaN(Number(user.ci))) {
+        return 'Error: Formato de CI inválido.';
+    }
     if (exists) {
       return (exists.email === user.email)
         ? 'Error: Ya existe un usuario con este correo.'
@@ -20,6 +22,6 @@ export class UserService {
     }
 
     this.users.push({ ...user, id: Math.random().toString(36) });
-    return null; // Éxito
+    return null;
   }
 }

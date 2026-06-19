@@ -9,9 +9,8 @@ export class PlanService {
     return strategy.calculate(monto, tasa);
   }
   calculatePenalty(saldo: number, penaltyRate: number, atraso: number, gracia: number): number {
-    if (atraso <= gracia) {
-      return 0;
-    }
-    return saldo * (penaltyRate / 100) * (atraso - gracia);
+    if (saldo < 0 || penaltyRate < 0) throw new Error('Valores financieros inválidos');
+    const diasCobro = Math.max(0, atraso - gracia);
+    return saldo * (penaltyRate / 100) * diasCobro;
   }
 }

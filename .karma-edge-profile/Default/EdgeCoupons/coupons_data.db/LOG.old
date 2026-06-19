@@ -1,0 +1,5 @@
+2026/06/19-04:54:56.110 cf0 Creating DB C:\Users\MSI LAPTOP\Desktop\Taller-de-Software\ProyectoBanco\proyectobanco.client\.karma-edge-profile\Default\EdgeCoupons/coupons_data.db since it was missing.
+2026/06/19-04:54:56.116 cf0 Reusing MANIFEST C:\Users\MSI LAPTOP\Desktop\Taller-de-Software\ProyectoBanco\proyectobanco.client\.karma-edge-profile\Default\EdgeCoupons/coupons_data.db/MANIFEST-000001
+2026/06/19-04:54:56.751 c628 Level-0 table #5: started
+2026/06/19-04:54:56.754 c628 Level-0 table #5: 682681 bytes OK
+2026/06/19-04:54:56.755 c628 Delete type=0 #3

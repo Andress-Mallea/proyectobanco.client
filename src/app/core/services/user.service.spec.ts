@@ -38,5 +38,12 @@ describe('UserService', () => {
     const user: any = { ci: '1', email: 'x@x.com', fullName: 'X' }; // Sin rol
     service.addUser(user);
     expect(service.getUsers()[0].role).toBe(UserRole.CLIENT);
-});
+  });
+  it('debería retornar error si el CI tiene un formato inválido', () => {
+    const userInvalido = { id: '3', fullName: 'C', email: 'c@c.com', ci: '123A', role: 'Client' } as any;
+
+    const result = service.addUser(userInvalido);
+
+    expect(result).toBe('Error: Formato de CI inválido.');
+  });
 });

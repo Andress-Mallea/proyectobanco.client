@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BankService } from '../../core/services/bank.service';
+import { UserService } from '../../core/services/user.service';
+import { UserRole } from '../../core/models/enums.model';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CurrencyPipe } from '@angular/common';
@@ -15,7 +17,7 @@ export class AdminComponent {
   planForm: FormGroup;
   userForm: FormGroup;
 
-  constructor(private fb: FormBuilder, public bankService: BankService, private router: Router) {
+  constructor(private fb: FormBuilder, public bankService: BankService, public userService: UserService, private router: Router) {
     // Formulario para los Planes (HUs)
     this.planForm = this.fb.group({
       usuarioSeleccionado: ['', Validators.required],
@@ -36,7 +38,7 @@ export class AdminComponent {
       ci: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
       // Validamos que sea un formato de correo válido
       email: ['', [Validators.required, Validators.email]],
-      role: ['Client']
+      role: [UserRole.CLIENT]
     });
   }
 
@@ -48,17 +50,17 @@ export class AdminComponent {
   }
 
   saveUser() {
-  if (this.userForm.valid) {
-    const error = this.bankService.addUser(this.userForm.value);
+    if (this.userForm.valid) {
+      const error = this.userService.addUser(this.userForm.value);
 
-    if (error) {
-      alert(error); // Muestra el error de duplicado
-    } else {
-      this.userForm.reset({ role: 'Client' });
-      // Al resetear, Angular detecta que la lista en el servicio cambió si se accede por método
+      if (error) {
+        alert(error); // Muestra el error de duplicado
+      } else {
+        this.userForm.reset({ role: 'Client' });
+        // Al resetear, Angular detecta que la lista en el servicio cambió si se accede por método
+      }
     }
   }
-}
   esRutaPlanes(): boolean {
     return this.router.url.includes('plans');
   }

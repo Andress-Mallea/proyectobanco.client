@@ -26,24 +26,26 @@ export class BankService {
   public notifications: { message: string, type: 'success' | 'error' }[] = [];
   getPlans() { return this.plans; }
   AddPlan(plan: any) {
-  const nuevoCredito: CreditPlan = {
-      usuarioSeleccionado: plan.usuarioSeleccionado,
-      monto: plan.monto,
-      plazoMeses: plan.plazoMeses,
-      interestRate: plan.interestRate,
-      esFija: plan.esFija,
-      penaltyRate: plan.penaltyRate,
-      graceDays: plan.graceDays,
-      saldoPendiente: plan.monto, // El saldo inicial es el monto total
-      createdAt: new Date(),
-      id: Math.random().toString(36)
-    };
+    if (plan.monto > 50000) {
+      throw new Error('El monto excede el límite permitido');
+    }
+    const nuevoCredito: CreditPlan = {
+        usuarioSeleccionado: plan.usuarioSeleccionado,
+        monto: plan.monto,
+        plazoMeses: plan.plazoMeses,
+        interestRate: plan.interestRate,
+        esFija: plan.esFija,
+        penaltyRate: plan.penaltyRate,
+        graceDays: plan.graceDays,
+        saldoPendiente: plan.monto,
+        createdAt: new Date(),
+        id: Math.random().toString(36)
+      };
   this.plans.push(nuevoCredito);
   this.showToast('Crédito creado exitosamente');
   }
   showToast(message: string, type: 'success' | 'error' = 'success') {
   this.notifications.push({ message, type });
-  // El mensaje desaparece solo después de 3 segundos
   setTimeout(() => {
     this.notifications.shift();
   }, 3000);
@@ -52,7 +54,6 @@ export class BankService {
 
   addUser(user: SystemUser): string | null {
     user.role = user.role || UserRole.CLIENT;
-    // Validar duplicados por Email o CI
     const exists = this.users.find(u => u.email === user.email || u.ci === user.ci);
 
     if (exists) {
@@ -63,6 +64,6 @@ export class BankService {
 
     this.users.push({ ...user, id: Math.random().toString(36) });
     this.showToast('Usuario registrado exitosamente');
-    return null; // Todo OK
+    return null;
   }
 }

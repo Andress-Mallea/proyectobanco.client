@@ -5,7 +5,6 @@ describe('UserService', () => {
   let service: UserService;
 
   beforeEach(() => {
-    // Se instancia el servicio antes de cada prueba para tener un estado limpio
     service = new UserService();
   });
 
@@ -14,15 +13,10 @@ describe('UserService', () => {
   });
 
   it('debería retornar error si el CI ya existe', () => {
-    // Arrange
     const u1: SystemUser = { id: '1', fullName: 'A', email: 'a@a.com', ci: '123456', role: 'Client' };
     const u2: SystemUser = { id: '2', fullName: 'B', email: 'b@b.com', ci: '123456', role: 'Client' };
-
-    // Act
     service.addUser(u1);
     const resultado = service.addUser(u2);
-
-    // Assert
     expect(resultado).toBe('Error: Ya existe un usuario con esta Cédula de Identidad.');
   });
 
@@ -35,7 +29,7 @@ describe('UserService', () => {
   });
   it('debería asignar el rol CLIENT por defecto mediante enum', () => {
     const service = new UserService();
-    const user: any = { ci: '123456', email: 'x@x.com', fullName: 'X' }; // Sin rol
+    const user: any = { ci: '123456', email: 'x@x.com', fullName: 'X' };
     service.addUser(user);
     expect(service.getUsers()[0].role).toBe(UserRole.CLIENT);
   });

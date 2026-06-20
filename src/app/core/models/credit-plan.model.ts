@@ -1,12 +1,12 @@
 export interface CreditPlan {
   id?: string;
-  usuarioSeleccionado: string; // Cambio de 'name' a este
-  monto: number;               // Antes era minAmount/maxAmount
-  plazoMeses: number;          // Atributo nuevo
+  usuarioSeleccionado: string;
+  monto: number;
+  plazoMeses: number;
   interestRate: number;
-  esFija: boolean;             // Antes era isVariableRate
+  esFija: boolean;
   penaltyRate: number;
   graceDays: number;
-  saldoPendiente?: number;     // Atributo nuevo para el seguimiento
+  saldoPendiente?: number;
   createdAt: Date;
 }

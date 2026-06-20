@@ -3,9 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './modules/admin/admin.component';
 
 const routes: Routes = [
-  // Redirigimos al panel administrativo por defecto
   { path: 'admin/plans', component: AdminComponent },
-  { path: 'admin/users', component: AdminComponent }, // Comparten componente en este ejemplo rápido
+  { path: 'admin/users', component: AdminComponent },
   { path: '', redirectTo: 'admin/plans', pathMatch: 'full' },
   { path: '**', redirectTo: 'admin/plans' }
 ];

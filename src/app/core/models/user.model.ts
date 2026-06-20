@@ -3,5 +3,5 @@ export interface SystemUser {
   fullName: string;
   email: string;
   role: 'Admin' | 'Staff' | 'Client';
-  ci: string; // Nuevo atributo
+  ci: string;
 }

@@ -1,4 +1,5 @@
 import { BankService } from './bank.service';
+import { SimpleInterestStrategy } from '../strategies/simple-interest.strategy';
 
 describe('BankService', () => {
   it('debería lanzar error si el monto del plan supera el límite máximo de 50000', () => {

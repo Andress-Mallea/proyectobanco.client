@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms'; // Add this import
+import { ReactiveFormsModule } from '@angular/forms';
 import { AdminComponent } from './admin.component';
 import { CurrencyPipe } from '@angular/common';
 @NgModule({
@@ -8,7 +8,7 @@ import { CurrencyPipe } from '@angular/common';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    CurrencyPipe // Add this to imports
+    CurrencyPipe
   ],
 })
 export class AdminModule { }

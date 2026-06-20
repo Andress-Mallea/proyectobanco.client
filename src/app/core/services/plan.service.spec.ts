@@ -9,15 +9,10 @@ describe('PlanService - Strategy Pattern', () => {
   });
 
   it('debería calcular el interés simple correctamente usando la estrategia', () => {
-    // Arrange
     const strategy = new SimpleInterestStrategy();
     const monto = 1000;
-    const tasa = 10; // 10%
-
-    // Act
+    const tasa = 10;
     const resultado = service.calculateFinalAmount(monto, tasa, strategy);
-
-    // Assert
     expect(resultado).toBe(1100);
   });
 
